@@ -101,38 +101,7 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-        const menuToggle = document.getElementById('menu-toggle');
-        const sidebarWrapper = document.getElementById('sidebar-wrapper');
+    <script src="index.js"></script>
 
-        menuToggle.addEventListener('click', function() {
-            sidebarWrapper.classList.toggle('toggled');
-            if (sidebarWrapper.classList.contains('toggled')) {
-                menuToggle.textContent = "Show Menu";
-            } else {
-                menuToggle.textContent = "Hide Menu";
-            }
-        });
-
-        // Check window width on page load and display toggle button accordingly
-        window.addEventListener('load', function() {
-            if (window.innerWidth <= 768) { // Set your desired minimum width here
-                menuToggle.classList.remove('d-none');
-            }
-        });
-
-        // Check window width on resize and display toggle button accordingly
-        window.addEventListener('resize', function() {
-            if (window.innerWidth <= 768) { // Set your desired minimum width here
-                menuToggle.classList.remove('d-none');
-            } else {
-                menuToggle.classList.add('d-none');
-            }
-        });
-    </script>
 </body>
 </html>

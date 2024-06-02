@@ -38,27 +38,32 @@ window.addEventListener('resize', function() {
             pdf.text("Monthly Report", 10, 10);
             pdf.save("monthly_report.pdf");
         }
-        function toggleCardFields() {
-            var paymentType = document.getElementById('payment-type').value;
-            var cardFields = document.getElementById('card-fields');
-            var paypalEmailField = document.getElementById('paypal-email-field');
-            var mpesaNumberField = document.getElementById('mpesa-email-field');
+        document.addEventListener("DOMContentLoaded", function() {
+            const paymentMethodSelect = document.getElementById("paymentMethod");
+            const creditCardInfo = document.getElementById("creditCardInfo");
+            const paypalEmailField = document.getElementById("paypal-email-field");
+            const mpesaNumberField = document.getElementById("mpesa-number-field");
+            const banktransferinfo = document.getElementById("banktransferinfo");
 
-            if (paymentType === 'credit-card' || paymentType === 'debit-card') {
-                cardFields.style.display = 'block';
-                paypalEmailField.style.display = 'none';
-                mpesaNumberField.style.display = 'none';
-            } else if (paymentType === 'paypal') {
-                cardFields.style.display = 'none';
-                paypalEmailField.style.display = 'block';
-                mpesaNumberField.style.display = 'none';
-            } else if (paymentType === 'mpesa') {
-                cardFields.style.display = 'none';
-                paypalEmailField.style.display = 'none';
-                mpesaNumberField.style.display = 'block';
-            } else {
-                cardFields.style.display = 'none';
-                paypalEmailField.style.display = 'none';
-                mpesaNumberField.style.display = 'none';
-            }
-        }
+            paymentMethodSelect.addEventListener("change", function() {
+                const selectedMethod = paymentMethodSelect.value;
+        
+                // Hide all payment method specific fields initially
+                creditCardInfo.style.display = "none";
+                paypalEmailField.style.display = "none";
+                mpesaNumberField.style.display = "none";
+                banktransferinfo.style.display = "none";
+
+                // Show the relevant fields based on the selected payment method
+                if (selectedMethod === "creditCard" || selectedMethod === "debitCard") {
+                    creditCardInfo.style.display = "block";
+                } else if (selectedMethod === "paypal") {
+                    paypalEmailField.style.display = "block";
+                } else if (selectedMethod === "mpesa") {
+                    mpesaNumberField.style.display = "block";
+                } else if(selectedMethod === "banktransferinfo"){
+                    banktransferinfo.style.display="block";
+                }
+            });
+        });
+        
