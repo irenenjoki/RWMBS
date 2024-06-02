@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Billing Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://t3.ftcdn.net/jpg/05/68/79/86/360_F_568798653_8vErJXVk7GIIkZwkSMhXq1jLJrC3zkm6.jpg">
+    <script src="https://kit.fontawesome.com/d89edf4aa2.js" crossorigin="anonymous"></script>
+    <style>
+        .container {
+            background-image: url('https://t3.ftcdn.net/jpg/07/88/68/72/360_F_788687262_ht2f0Xu6DXiaVX3hlRXGf3xJBFvQ585r.jpg'); /* Replace with your image URL */
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>Water Billing Management System</h1>
+            <form action="login.php" method="POST">
+                <div class="textbox">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="textbox">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+            </form><br>
+            <div class="new-user">
+                <button onclick="window.location.href='register.html'" class="btn">New User</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

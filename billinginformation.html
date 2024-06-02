@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://t3.ftcdn.net/jpg/05/68/79/86/360_F_568798653_8vErJXVk7GIIkZwkSMhXq1jLJrC3zkm6.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-t/sfK13I2g5TgPxAKf5v+v3dNMIlPAVgVqhN6a1ZT8uMvp/5LjzJb/yxmjXu3KzPR6KoHvXTOmWiC66hTngZ1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Client Billing History</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/d89edf4aa2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="sidebar" id="sidebar-wrapper">
+        <div class="bg-dark border-right" id="sidebar-wrapper">
+        <div class="sidebar-header">WBMS</div>
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="billinginformation.html" class="menu-item active"><i class="fas fa-file-invoice"></i> Billing Information</a>
+            <a href="payment.html" class="menu-item"><i class="fas fa-credit-card"></i> Make Payment</a>
+            <a href="profile.html" class="menu-item"><i class="fas fa-user"></i> Profile</a>
+            <a href="monthlyreport.html" class="menu-item"><i class="fas fa-chart-pie"></i> Monthly Report</a>
+            <a href="index.html" class="menu-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="about us.html" class="menu-item"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="contact us.html" class="menu-item"><i class="fas fa-phone"></i> Contact Us</a>
+        </div>
+    </div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <a class="navbar-brand" href="dashboard.html">
+                <h1 style="text-align: center; font-family:Snap ITC; color:blue">RWMBS</h1></a>
+            <div class="user-info">John Doe</div>
+        </div>
+        <div class="content">
+            <div class="card">
+                <div class="card-header">202205020002 - Smith, John D</div>
+                <div class="card-body">
+                    <h2 style="text-align: center; color: blue;">Water Billing Information</h2>
+                    <div class="table-controls">
+                        <label for="entries">Show 
+                            <select id="entries">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select> entries
+                        </label>
+                        <input type="text" id="search" placeholder="Search...">
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Reading Date</th>
+                                <th>Due Date</th>
+                                <th>Current Reading</th>
+                                <th>Previous Reading</th>
+                                <th>Consumption</th>
+                                <th>Rate (m³)</th>
+                                <th>Status</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2022-05-02</td>
+                                <td>2022-05-15</td>
+                                <td>732</td>
+                                <td>601</td>
+                                <td>131</td>
+                                <td>10.75</td>
+                                <td><span class="status-paid">Paid</span></td>
+                                <td>1,408.25</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2022-04-01</td>
+                                <td>2022-05-02</td>
+                                <td>601</td>
+                                <td>500</td>
+                                <td>101</td>
+                                <td>10.75</td>
+                                <td><span class="status-paid">Paid</span></td>
+                                <td>1,085.75</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn back-btn">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <h5>Find Us On</h5>
+            <div class="w3-xlarge w3-padding-16">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+            <p>Powered by <a href="mailto:irenewaweru9@gmail.com" target="_blank" class="w3-hover-text-green">RWMBS</a></p>
+            &copy; 2024 RWMBS. All rights reserved.
+            <br>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        // Show and Entries functionality
+        document.getElementById('entries').addEventListener('change', function() {
+            var entries = this.value;
+            // Implement logic to show the selected number of entries in the table
+            console.log('Show ' + entries + ' entries');
+        });
+
+        document.getElementById('search').addEventListener('input', function() {
+            var query = this.value.toLowerCase();
+            var rows = document.querySelectorAll('tbody tr');
+            rows.forEach(function(row) {
+                var cells = row.querySelectorAll('td');
+                var match = false;
+                cells.forEach(function(cell) {
+                    if (cell.textContent.toLowerCase().includes(query)) {
+                        match = true;
+                    }
+                });
+                row.style.display = match ? '' : 'none';
+            });
+        });
+
+    </script>
+</body>
+</html>
