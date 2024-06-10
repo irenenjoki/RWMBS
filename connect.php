@@ -2,10 +2,10 @@
 session_start();
 
 // Database connection parameters
-$servername = "your_servername";
-$username = "your_username";
-$password = "your_password";
-$database = "your_database";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "water_management";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -18,9 +18,11 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $email = $_POST['email'];
+
 
     // Validate credentials
-    $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    $query = "SELECT * FROM register WHERE username = '$username' AND password = '$password' AND email='$email'";
     $result = $conn->query($query);
 
     if ($result->num_rows == 1) {

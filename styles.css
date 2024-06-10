@@ -138,9 +138,17 @@ body {
     }
 }
 /* billinginfo*/
+.user-info {
+    margin-top: 20px;
+}
 
+.btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
         .main-content {
-            flex-grow: 1;
+            flex-grow: 12;
             padding: 20px;
         }
 
@@ -158,6 +166,7 @@ body {
 
         .user-info {
             font-size: 1.2em;
+            display: flex;
         }
 
         .content {

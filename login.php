@@ -1,18 +1,31 @@
 <?php
-session_start();
-// Include database connection file
-require_once 'db.php'; // Assuming you have a file for database connection
+// Database connection parameters
+$servername = "localhost";
+$username_db = "root"; // Changed to avoid conflict with form data
+$password_db = ""; // Changed to avoid conflict with form data
+$database = "water_management";
+
+// Create a new database connection
+$conn = new mysqli($servername, $username_db, $password_db, $database);
+
+// Check if there are any errors in the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_POST['name'];
+    $password = $_POST['passwords'];
 
     // Validate credentials (This is a basic example, consider using prepared statements)
-    $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    $result = mysqli_query($conn, $query);
+    $stmt = $conn->prepare("SELECT * FROM register WHERE name = ? AND passwords = ?");
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (mysqli_num_rows($result) == 1) {
+    if ($result->num_rows == 1) {
         // Successful login
+        session_start();
         $_SESSION['username'] = $username;
         header('Location: dashboard.html');
         exit();
@@ -20,5 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Account doesn't exist
         echo 'Account does not exist. Please check your username and password.';
     }
+
+    $stmt->close();
 }
+
+// Close the connection
+$conn->close();
 ?>

@@ -1,54 +1,56 @@
 <?php
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Handle other form fields (payment details)
-
-    // Handle image upload
-    $targetDir = "uploads/";
-    $targetFile = $targetDir . basename($_FILES["meter-image"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
-
-    // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["meter-image"]["tmp_name"]);
-    if($check !== false) {
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-
-    // Check if file already exists
-    if (file_exists($targetFile)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-
-    // Check file size
-    if ($_FILES["meter-image"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-
-    // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["meter-image"]["tmp_name"], $targetFile)) {
-            echo "The file ". htmlspecialchars( basename( $_FILES["meter-image"]["name"])). " has been uploaded.";
-            // Now process the uploaded image and calculate payment amount
-            // You'll need to implement this part based on your requirements
+if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+    // Retrieve form data
+    if (isset($_POST['paymentAmount']) && isset($_POST['paymentMethod'])) {
+        $paymentAmount = $_POST['paymentAmount'];
+        $paymentMethod = $_POST['paymentMethod'];
+        
+        // Perform payment processing here (e.g., charge credit card, validate payment, etc.)
+        
+        // Dummy response for demonstration
+        $paymentStatus = "Success"; // Change this based on actual payment processing
+        
+        if ($paymentStatus === "Success") {
+            // Database connection parameters
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "water_management";
+            
+            // Insert payment details into the database
+            $conn = new mysqli($servername, $username, $password, $database);
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            
+            // Prepare and bind the SQL statement
+            $stmt = $conn->prepare("INSERT INTO process_payment (paymentMethod, paymentAmount) VALUES (?, ?)");
+            $stmt->bind_param("sd", $paymentMethod, $paymentAmount); // "s" indicates a string, "d" indicates a double/decimal value
+            
+            // Execute the statement
+            if ($stmt->execute()) {
+                echo "<h2>Payment Successful!</h2>";
+                echo "<p>Payment Method: $paymentMethod</p>";
+                echo "<p>Amount Paid: $paymentAmount</p>";
+            } else {
+                echo "<h2>Error!</h2>";
+                echo "<p>Unable to process payment. Please try again later.</p>";
+            }
+            
+            // Close the statement and connection
+            $stmt->close();
+            $conn->close();
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo "<h2>Payment Failed!</h2>";
+            echo "<p>Unable to process payment. Please try again later.</p>";
         }
+    } else {
+        echo "<h2>Error!</h2>";
+        echo "<p>Payment amount and method are required.</p>";
     }
+} else {
+    // Redirect back to payment page if accessed directly
+    header("Location: payment.html");
+    exit;
 }
 ?>
