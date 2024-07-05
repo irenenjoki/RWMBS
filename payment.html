@@ -6,7 +6,7 @@
     <title>Water Billing Management System - Make Payment</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="https://t3.ftcdn.net/jpg/05/68/79/86/360_F_568798653_8vErJXVk7GIIkZwkSMhXq1jLJrC3zkm6.jpg">
+    <link rel="icon" type="image/png" href="Images/waterlogo.jpg">
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/d89edf4aa2.js" crossorigin="anonymous"></script>
 </head>
@@ -15,21 +15,20 @@
         <div class="bg-dark border-right" id="sidebar-wrapper">
             <div class="sidebar-heading text-white">WBMS</div>
             <div class="list-group list-group-flush">
+                <a href="landing.html" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fa fa-home"></i> Home</a>
                 <a href="dashboard.html" class="list-group-item list-group-item-action bg-dark text-white">
                     <i class="fa fa-tachometer-alt"></i> Dashboard</a>
                 <a href="billinginformation.html" class="list-group-item list-group-item-action bg-dark text-white">
                     <i class="fas fa-file-invoice"></i> Billing Information</a>
-                <a href="payment.html" class="list-group-item list-group-item-action bg-dark text-white active">
+                <a href="register.html" class="list-group-item list-group-item-action bg-dark text-white active">
                     <i class="fas fa-credit-card"></i> Make Payment</a>
                 <a href="profile.html" class="list-group-item list-group-item-action bg-dark text-white">
                     <i class="fas fa-user"></i> Profile</a>
-                    </a>
                 <a href="index.html" class="list-group-item list-group-item-action bg-dark text-white">
                     <i class="fas fa-sign-out-alt"></i> Logout</a>
                 <a href="about us.html" class="list-group-item list-group-item-action bg-dark text-white">
                     <i class="fas fa-info-circle"></i> About Us</a>
-                <a href="contact us.html" class="list-group-item list-group-item-action bg-dark text-white">
-                    <i class="fas fa-phone"></i> Contact Us</a>
             </div>
         </div>
 
@@ -54,18 +53,18 @@
                             <div class="card-body">
                                 <h5 class="card-title">Payment Method</h5>
                                 <p class="card-text">Choose your preferred payment method and complete your payment securely.</p>
-                                <form method="post" action="process_payment.php">
+                                <form action="process_payment.php" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label for="meterNumber" class="form-label">Meter Number:</label>
                                         <input type="text" class="form-control" id="meterNumber" name="meterNumber" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="paymentAmount" class="form-label">Amount</label>
+                                        <label for="paymentAmount" class="form-label">Amount:</label>
                                         <input type="number" class="form-control" id="paymentAmount" name="paymentAmount" placeholder="Enter amount" required>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="paymentMethod" class="form-label">Payment Method</label>
-                                        <select class="form-select" id="paymentMethod" name="paymentMethod" required>
+                                    <div class="form-group">
+                                        <label for="paymentMethod" class="form-label">Payment Method:</label>
+                                        <select id="paymentMethod" name="paymentMethod" class="form-select" onchange="toggleCardFields()" required>
                                             <option value="" disabled selected>Select payment method</option>
                                             <option value="creditCard">Credit Card</option>
                                             <option value="debitCard">Debit Card</option>
@@ -74,7 +73,41 @@
                                             <option value="banktransferinfo">Bank Transfer</option>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Pay Now</button>
+
+                                    <div id="card-fields" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="card-number">Card Number:</label>
+                                            <input type="text" id="card-number" name="card-number" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="expiry-date">Expiry Date:</label>
+                                            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cvv">CVV:</label>
+                                            <input type="text" id="cvv" name="cvv" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name-on-card">Name on Card:</label>
+                                            <input type="text" id="name-on-card" name="name-on-card" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div id="paypal-email-field" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="paypal-email">PayPal Email:</label>
+                                            <input type="email" id="paypal-email" name="paypal-email" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div id="mpesa-number-field" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="mpesa-number">Mpesa Number:</label>
+                                            <input type="number" id="mpesa-number" name="mpesa-number" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary mt-3">Pay Now</button>
                                 </form>
                             </div>
                         </div>
@@ -83,8 +116,9 @@
             </div>
         </div>
     </div>
+    
     <footer>
-        <div class="footer">
+        <div class="footer text-center mt-5">
             <h5>Find Us On</h5>
             <div class="w3-xlarge w3-padding-16">
                 <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -94,9 +128,36 @@
             </div>
             <p>Powered by <a href="mailto:irenewaweru9@gmail.com" target="_blank" class="w3-hover-text-green">RWMBS</a></p>
             &copy; 2024 RWMBS. All rights reserved.
-            <br>
         </div>
     </footer>
+    
+    <script>
+        function toggleCardFields() {
+            var paymentType = document.getElementById('paymentMethod').value;
+            var cardFields = document.getElementById('card-fields');
+            var paypalEmailField = document.getElementById('paypal-email-field');
+            var mpesaNumberField = document.getElementById('mpesa-number-field');
+
+            if (paymentType === 'creditCard' || paymentType === 'debitCard') {
+                cardFields.style.display = 'block';
+                paypalEmailField.style.display = 'none';
+                mpesaNumberField.style.display = 'none';
+            } else if (paymentType === 'paypal') {
+                cardFields.style.display = 'none';
+                paypalEmailField.style.display = 'block';
+                mpesaNumberField.style.display = 'none';
+            } else if (paymentType === 'mpesa') {
+                cardFields.style.display = 'none';
+                paypalEmailField.style.display = 'none';
+                mpesaNumberField.style.display = 'block';
+            } else {
+                cardFields.style.display = 'none';
+                paypalEmailField.style.display = 'none';
+                mpesaNumberField.style.display = 'none';
+            }
+        }
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="index.js"></script>

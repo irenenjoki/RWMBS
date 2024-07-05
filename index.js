@@ -114,28 +114,33 @@ window.addEventListener('resize', function() {
                 return false;
             });
         });
-        //Your script to fetch and inject payment history data goes here
-            // Example script to fetch and inject payment history data
-            // Replace this with your actual implementation
-            $(document).ready(function() {
-                // Event listener for the fetch bill button
-                $("#fetchBillBtn").click(function() {
-                    var meterNumber = $("#meterNumber").val(); // Get the meter number from the input field
-    
-                // AJAX request to fetch payment history data based on meter number
-                $.ajax({
-                    url: 'fetch_bill.php', // Change this to your PHP script
-                    type: 'POST',
-                    data: {
-                        meterNumber: '1234567' // Example meter number, replace with actual value from billing information page
-                    },
-                    success: function(response) {
-                        // Inject the payment history data into the table body
-                        $('#billinginformation ').html(response);
-                    }
-                });
+        $(document).ready(function() {
+            $.ajax({
+                url: 'fetch_bill.php',
+                method: 'GET',
+                success: function(data) {
+                    const billingHistory = JSON.parse(data);
+                    const tableBody = $('#billingTable tbody');
+                    billingHistory.forEach((record, index) => {
+                        const statusBadge = record.status === 'Paid' ? '<span class="badge badge-success">Paid</span>' : '<span class="badge badge-danger">Unpaid</span>';
+                        tableBody.append(`
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${record.reading_date}</td>
+                                <td>${record.due_date}</td>
+                                <td>${record.current_reading}</td>
+                                <td>${record.previous_reading}</td>
+                                <td>${record.consumption}</td>
+                                <td>${record.rate}</td>
+                                <td>${statusBadge}</td>
+                                <td>${record.amount}</td>
+                            </tr>
+                        `);
+                    });
+                    $('#billingTable').DataTable();
+                }
             });
-            });
+        });
             $(document).ready(function() {
                 // Fetch and display profile details
                 $.ajax({
@@ -199,3 +204,61 @@ window.addEventListener('resize', function() {
                     }
                 });
             });            
+
+           
+            function fetchBill(event) {
+                event.preventDefault(); // Prevent default form submission
+        
+                var meterNumber = document.getElementById('meterNumber').value;
+        
+                // AJAX request to fetch bill amount
+                $.ajax({
+                    type: 'POST',
+                    url: 'fetch_bill.php',
+                    data: { meterNumber: meterNumber },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            // Display bill amount dynamically
+                            alert('Amount to Pay: KES ' + response.amount); // Show amount in alert
+                            // You can also update UI elements with the fetched amount
+                        } else {
+                            alert('No bill found for Meter Number: ' + meterNumber);
+                        }
+                    },
+                    error: function() {
+                        alert('Error fetching bill. Please try again.');
+                    }
+                });
+            }
+        
+            // Attach event listener to form submit
+            $(document).ready(function() {
+                $('#fetchBillForm').submit(function(event) {
+                    fetchBill(event); // Call fetchBill function on form submit
+                });
+            });
+            function toggleCardFields() {
+                var paymentType = document.getElementById('payment-type').value;
+                var cardFields = document.getElementById('card-fields');
+                var paypalEmailField = document.getElementById('paypal-email-field');
+                var mpesaNumberField = document.getElementById('mpesa-email-field');
+    
+                if (paymentType === 'credit-card' || paymentType === 'debit-card') {
+                    cardFields.style.display = 'block';
+                    paypalEmailField.style.display = 'none';
+                    mpesaNumberField.style.display = 'none';
+                } else if (paymentType === 'paypal') {
+                    cardFields.style.display = 'none';
+                    paypalEmailField.style.display = 'block';
+                    mpesaNumberField.style.display = 'none';
+                } else if (paymentType === 'mpesa') {
+                    cardFields.style.display = 'none';
+                    paypalEmailField.style.display = 'none';
+                    mpesaNumberField.style.display = 'block';
+                } else {
+                    cardFields.style.display = 'none';
+                    paypalEmailField.style.display = 'none';
+                    mpesaNumberField.style.display = 'none';
+                }
+            }

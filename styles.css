@@ -25,7 +25,7 @@ body, html {
     margin: 15px;
     box-shadow: 0 4px 8px rgba(1, 15, 134, 0.1);
     border-radius: 8px;
-    background-image: url('https://www.webdesignhot.com/storage/preview/01h932txw9njjr1vqtay9vxgch/dark-water-01h932txw9njjr1vqtay9vxgch_preview.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path or URL of your image */
+    background-image: url('https://cdn.pixabay.com/photo/2021/03/25/22/48/water-drop-6124381_1280.jpg'); /* Replace with the actual path or URL of your image */
     background-size: cover; /* Ensures the background image covers the entire card box */
     background-position: center; /* Centers the background image */
 }

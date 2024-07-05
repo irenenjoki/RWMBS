@@ -1,106 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Water Billing Management System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="https://t3.ftcdn.net/jpg/05/68/79/86/360_F_568798653_8vErJXVk7GIIkZwkSMhXq1jLJrC3zkm6.jpg">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/d89edf4aa2.js" crossorigin="anonymous"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="Images\waterlogo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <title >Contact Us </title>
+    
 </head>
 <body>
-    <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <div class="bg-dark border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading text-white">WBMS</div>
-            <div class="list-group list-group-flush">
-                <!-- Sidebar links here -->
-                <a href="dashboard.html" class="list-group-item list-group-item-action bg-dark text-white">
-                    <i class="fa fa-tachometer-alt"></i> Dashboard</a>
-                <a href="payment.html" class="list-group-item list-group-item-action bg-dark text-white">
-                    <i class="fas fa-credit-card"></i> Make Payment
-                </a>
-                <a href="billinginformation.html" class="list-group-item list-group-item-action bg-dark text-white">
-                    <i class="fas fa-file-invoice"></i> Billing Information
-                </a>
-                <a href="profile.html" class="list-group-item list-group-item-action bg-dark text-white">
-                    <i class="fas fa-user"></i> Profile
-                </a>
-                
-                <a href="index.html" class="list-group-item list-group-item-action bg-dark text-white">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-                <a href="about us.html" class="list-group-item list-group-item-action bg-dark text-white">
-                    <i class="fas fa-info-circle"></i> About Us
-                </a>
-                <a href="contact us.html" class="list-group-item list-group-item-action bg-dark text-white active">
-                    <i class="fas fa-phone"></i> Contact Us
-                </a>
-                
-            </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper" class="flex-grow-1">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="btn btn-primary d-none" id="menu-toggle">Menu Bar</button>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0 custom-nav">
-                        
-                        <li class="nav-item">
-                        
-                        </li>
-                    </ul>
+    <!-- header -->
+    <header>
+        <div  style="background-image: url(https://img.freepik.com/premium-photo/african-woman-call-center-happy-by-laptop-with-thinking-contact-us-telemarketing-consultant-agent-employee-girl-with-pc-mic-headphones-customer-support-insurance-company_590464-262317.jpg?w=740); background-attachment: fixed; height: 600px; width: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
+            <!-- navbar -->
+            <nav class="nav navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bg-dark-transparent">
+                <div class="container">
                     <a class="navbar-brand" href="dashboard.html">
-                        <h1 style="font-family:Snap ITC; color:blue">RWMBS</h1></a>
+                        <img src="Images\waterlogo.jpg" height="70" alt="Your choise logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                            <li class="nav-item footer-link-item">
+                                <a class="nav-link " style="color: rgb(0, 149, 199);"href="landing.html">Home</a>
+                            </li>
+                            
+                            <li class="nav-item active footer-link-item">
+                                <a class="nav-link text-dark" href="dashboard.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item footer-link-item">
+                                <a class="nav-link text-dark" href="contact us.html">Contact Us</a>
+                            </li>
+                            <li class="nav-item footer-link-item">
+                                <a class="nav-link text-dark" href="about us.html">About Us</a>
+                            </li>
+                        </ul>
+                    </div> <!--collapse end-->
+                </div> <!--container end-->
+            </nav> <!--navbar end-->
+            
+            <div class="container flex-column d-flex justify-content-center"style=" height: 600px;">
+                <div class="text-center py-4" >
+                    <h1 class="text-white py-3">
+                        <span class="font-weight-bold" style="color:rgb(0, 0, 0)">CONTACT US</span>
+                    </h1>
                 </div>
-            </nav>
-
-            <div class="container-fluid">
-                <h1 class="mt-4">Contact Us</h1>
-                <p>If you have any questions, please feel free to reach out to us through the form below:</p>
-                <form action="contact.php" method="POST">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                <br><br>
+                <a href="#" class="gotoupbtn"><i class="far fa-arrow-alt-circle-up"></i></a>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
+    </header> <!--header end-->
+    
+    <section>
+        <div class="container">
+            <div class="row p-3 m-3">
+                <div class="col-12 text-center">
+                    <h1>Visit us or <b  style="color: rgb(0, 149, 199);">call us today</b></h1>
+                </div>
+            </div> <!--row end-->
+            
+                   
+                <div class="col-md-6 col-sm-12 p-3 bg-bw">
+                    <div class="text-center p-5 m-2">
+                        <div class="p-3 m-2">
+                            <h4 class="text-color">CALL US</h4>
+                            <div><a href="tel:0711791575">0711791575</a></div>
+                        </div>
+                        <div class="p-3 m-2">
+                            <h4 class="text-color">LOCATION</h4>
+                            <span>
+                                <i class="fas fa-map-marker fs-30">Nairobi</i>
+                            </span>
+                        </div>
+                        <div class="p-3 m-2">
+                            <h4 class="text-color">OUR TOP SERVICES</h4>
+                            <div>
+                                <b>Water connection</b>
+                            </div>
+                            <div>
+                                <b>Water pipe Repair</b>
+                            </div>
+                            <div>
+                                <b>Water bill payments </b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br> <!--row end-->
+    
+            <div class="row p-3 m-3">
+              <div class="col-12 text-center">
+                  <h1><b>AquaTrackafrica</b></h1>
+              </div><br>
+
+              <div class="row row-cols-1 row-cols-md-2">
+                <div class="col mb-4">
+                  <div class="card text-center">
+                    <div class="card-body">
+                      <h4 class="card-title"><b>OPENING HOURS</b></h4>
+                      <p class="card-text"><b>Monday - Friday</b><br>
+                        8:00am - 5:00pm<br><br>
+                        <b>Saturday</b><br>
+                        8:00am - 3:00pm<br><br>
+                        <b>Sunday</b><br>
+                        Closed</p>
+                    </div>
+                  </div>
+                </div> 
+
+                <div class="col mb-4">
+                  <div class="card">
+                    <img src="https://img.freepik.com/free-vector/save-water-ecology-concept-with-drop-water-coming-out-tap-realistic_1284-58828.jpg?t=st=1719755531~exp=1719759131~hmac=3929c1601024f2f12cb76683cf2ed0c36cb0d8b0ef5b41d528729e9ff8fb8f86&w=740" class="card-img-top" height="270px" alt="...">
+                  
+                </div>
+                
+                </div>  
+                <div class="col mb-4">
+                    <div class="card">
+                      <img src="https://img.freepik.com/free-vector/world-water-day-infographics_23-2148833626.jpg?t=st=1719756425~exp=1719760025~hmac=cd7dd2af75a54c77159c3e62b640224de266234cad62c488729adf8c6ad07286&w=740" class="card-img-top" height="270px" alt="...">
+                    
+                  </div>
+                  
+                  </div> 
+                  <div class="col mb-4">
+                    <div class="card">
+                      <img src="https://img.freepik.com/free-vector/flat-world-water-day-infographic-template_23-2149273825.jpg?t=st=1719756792~exp=1719760392~hmac=5e91111cc14fe3fd55e297dcf2c493f6cebcc44b65745dcc42c9f9cbb952e764&w=740" class="card-img-top" height="270px" alt="...">
+                    
+                  </div>
+                  
+                  </div> 
+                  <!--row end-->
+        
+    </section>
+    
+    <!-- footer 4-->
+    <div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                  <div class="col-lg-4 col-md-12 text-center">
+                    <hr class="pt-5 mt-5">
+                  </div>
+                  <div class="col-lg-4 col-md-12 text-center">
+                    <br>
+                <span>AquaTrack</span>
+                  </div>
+                  <div class="col-lg-4 col-md-12 text-center">
+                    <hr class="pt-5 mt-5">
+                  </div>
+                </div> <!--row end--><br><br>
+            <p>If you have any questions, do not hesitate to ask them.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-sm-10 px-2 py-3">
+                  <div class="d-flex justify-content-between py-3 my-2">
+                    <a href="https://twitter.com/irinnahrin" class="icon-link"><i class="fab fa-twitter"></i></a>
+                                <a href="https://web.whatsapp.com/" class="icon-link"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://www.instagram.com/irene.waweru.100/" class="icon-link"><i class="fab fa-instagram"></i></a>
+                                <a href="www.facebook.com" class="icon-link"><i class="fab fa-facebook"></i></a>
+                  </div>
+                </div>
+              </div>
+            <i class="fa fa-map-marker w3-text-red" style="width:30px"></i> Nairobi,Kenya<br><br>
+            <i class="fa fa-phone w3-text-red" style="width:30px"></i> Phone: 0711791575<br>
+            <div class="py-2 p-1 m-2">
+                <i class="fas fa-envelope-open-text fs-30"></i>
+                <a href="mailto:irenewaweru9@gmail.com"><span class="footer-link-item"> aquatrackafrica@gmail.com</span></a>
+              </div>
+            <p id="current-year"></p> 
+        </footer>
     </div>
-    <!-- /#wrapper -->
-
-    <footer>
-        <div class="footer">
-            <h5>Find Us On</h5>
-            <div class="w3-xlarge w3-padding-16">
-                <i class="fa fa-facebook-official w3-hover-opacity"></i>
-                <i class="fa fa-instagram w3-hover-opacity"></i>
-                <i class="fa fa-twitter w3-hover-opacity"></i>
-                <i class="fa fa-linkedin w3-hover-opacity"></i>
-            </div>
-            <p>Powered by <a href="mailto:irenewaweru9@gmail.com" target="_blank" class="w3-hover-text-green">RWMBS</a></p>
-            &copy; 2024 RWMBS. All rights reserved.
-            <br>
-        </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="index.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
