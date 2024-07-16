@@ -379,10 +379,10 @@ body {
 }
 
 .btn {
-    padding: 10px 15px;
+    padding: 1px 15px;
     border: none;
     border-radius: 5px;
-    background-color: #3498db;
+    background-color: #01080e;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;

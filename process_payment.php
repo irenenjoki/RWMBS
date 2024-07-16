@@ -1,60 +1,46 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-    // Retrieve form data
-    if (isset($_POST['paymentAmount']) && isset($_POST['paymentMethod']) && isset($_POST['meterNumber'])) {
-        $paymentAmount = $_POST['paymentAmount'];
-        $paymentMethod = $_POST['paymentMethod'];
-        $meterNumber = $_POST['meterNumber'];
+// Start the session (if not already started)
+session_start();
 
-        // Perform payment processing here (e.g., charge credit card, validate payment, etc.)
+// Database connection parameters
+$servername = "localhost";
+$username_db = "root"; // Database username
+$password_db = "";     // Database password
+$database = "water_management";
 
-        // Dummy response for demonstration
-        $paymentStatus = "Success"; // Change this based on actual payment processing
+try {
+    // Create a new database connection
+    $db = new PDO("mysql:host=$servername;dbname=$database", $username_db, $password_db);
+    // Set the PDO error mode to exception
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        if ($paymentStatus === "Success") {
-            // Database connection parameters
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "water_management";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $meter_number = $_POST['meterNumber'];
+        $amount_in_Ksh = $_POST['paymentAmount'];
+        $payment_mode = $_POST['paymentMethod'];
 
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $database);
+        // Simulate M-Pesa payment process
+        $transaction_id = "TX" . rand(1000, 9999); // Generate a random transaction ID
+        $payment_status = "Success"; // Simulate a successful payment
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            // Prepare and bind the SQL statement
-            $stmt = $conn->prepare("INSERT INTO process_payment (meterNumber, paymentMethod, paymentAmount) VALUES (?, ?, ?)");
-            $stmt->bind_param("ssd", $meterNumber, $paymentMethod, $paymentAmount); // "s" for string, "d" for double/decimal value
-
-            // Execute the statement
-            if ($stmt->execute()) {
-                // Alert message and redirect to landing.html
-                echo "<script>alert('Payment added successfully!');</script>";
-                echo "<script>window.location.replace('landing.html');</script>";
-                exit;
-            } else {
-                echo "<h2>Error!</h2>";
-                echo "<p>Unable to process payment. Please try again later.</p>";
-            }
-
-            // Close the statement and connection
-            $stmt->close();
-            $conn->close();
+        // Prepare the SQL statement
+        $stmt = $db->prepare("INSERT INTO process_payment (meterNumber, paymentAmount, paymentMethod, transactionId, paymentStatus) VALUES (?, ?, ?, ?, ?)");
+        
+        // Execute the statement with provided data
+        if ($stmt->execute([$meter_number, $amount_in_Ksh, $payment_mode, $transaction_id, $payment_status])) {
+            // Redirect to landing page on success
+            header("Location: landing.html");
+            exit();
         } else {
-            echo "<h2>Payment Failed!</h2>";
-            echo "<p>Unable to process payment. Please try again later.</p>";
+            // If execution fails, display an error
+            echo "Error: Unable to process payment.";
         }
-    } else {
-        echo "<h2>Error!</h2>";
-        echo "<p>Payment amount, method, and meter number are required.</p>";
     }
-} else {
-    // Redirect back to payment page if accessed directly
-    header("Location: payment.html");
-    exit;
+} catch (PDOException $e) {
+    // Display error message if connection or query fails
+    echo "Error: " . $e->getMessage();
 }
+
+// Close the connection (optional, as it will be closed automatically at the end of the script)
+$db = null;
 ?>

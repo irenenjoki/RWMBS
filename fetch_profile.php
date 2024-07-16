@@ -4,13 +4,15 @@ session_start();
 
 // Check if user is logged in
 if (!isset($_SESSION['username'])) {
+    // Redirect to login page if user is not logged in
     header('Location: login.php');
     exit();
 }
 
+// Database connection details
 $servername = "localhost";
-$username_db = "root"; // Changed to avoid conflict with form data
-$password_db = ""; // Changed to avoid conflict with form data
+$username_db = "root"; // Replace with your database username
+$password_db = "";     // Replace with your database password
 $database = "water_management";
 
 // Create a new database connection

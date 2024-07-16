@@ -1,4 +1,5 @@
 <?php
+
 // Database connection parameters
 $servername = "localhost";
 $username_db = "root"; // Database username
@@ -28,11 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Successful login
         session_start();
         $_SESSION['username'] = $username;
-        header('Location: payment.html');
-        exit();
+        echo json_encode(['success' => true]);
     } else {
         // Account doesn't exist
-        echo 'Account does not exist. Please check your username, password, and meter number.';
+        echo json_encode(['success' => false, 'error' => 'Account does not exist. Please check your username, password, and meter number.']);
     }
 
     $stmt->close();
@@ -41,4 +41,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Close the connection
 $conn->close();
 ?>
-

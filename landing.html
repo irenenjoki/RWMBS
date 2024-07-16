@@ -57,7 +57,7 @@
     <!-- Navigation bar code starts here -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-          <a class="navbar-brand" href="dashboard.html">
+          <a class="navbar-brand" href="landing.html">
             <img src="Images\waterlogo.jpg" height="70" alt="Your choise logo">
         </a>
             <label class="logo" >AquaTrack <small>.com </small></label>
@@ -71,8 +71,11 @@
                 </li>
                 
                 <li class="nav-item active footer-link-item">
-                    <a class="nav-link text-dark" href="dashboard.html">Dashboard</a>
+                    <a class="nav-link text-dark" href="register.html">Log In</a>
                 </li>
+                <li class="nav-item active footer-link-item">
+                  <a class="nav-link text-dark" href="dashboard.php">Portal</a>
+              </li>
                 <li class="nav-item footer-link-item">
                     <a class="nav-link text-dark" href="contact us.html">Contact Us</a>
                 </li>
@@ -219,6 +222,7 @@
                 class="rpt"></textarea>
 
             <button type="submit">submit</button>
+            <a href="view_responses.php" class="btn btn-primary" style="margin-left: 750px;">View Responses</a>
 
 
         </form>
@@ -229,7 +233,7 @@
     <div class="newsletter">
         <div class="subscribe">
             <h2 class="subscribe__title" style="color:rgba(0, 149, 199)">Let's keep in touch</h2>
-            <p class="subscribe__copy">Subscribe to keep up with all the news and updates.<br> Your comfort is always
+            <p style="color:rgb(17, 6, 6)" class="subscribe__copy">Subscribe to keep up with all the news and updates.<br> Your comfort is always
                 our priority.</p>
             <form action="subscription.php" method="POST">
                 <div class="form">
@@ -239,7 +243,7 @@
                 </div>
                 <div class="notice">
                     <input type="checkbox" checked>
-                    <span class="notice__copy">I agree to my email address being stored and used to recieve monthly
+                    <span style="color:rgb(17, 6, 6)"class="notice__copy">I agree to my email address being stored and used to recieve monthly
                         newsletters.</span>
                 </div>
             </form>

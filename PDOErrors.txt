@@ -1,0 +1,4 @@
+
+2024-07-16 18:55:39] - SQLSTATE[42S02]: Base table or view not found: 1932 Table 'admin.users' doesn't exist in engine
+2024-07-16 19:09:51] - SQLSTATE[42S02]: Base table or view not found: 1932 Table 'admin.users' doesn't exist in engine
+2024-07-16 19:10:33] - SQLSTATE[42S02]: Base table or view not found: 1932 Table 'admin.users' doesn't exist in engine
