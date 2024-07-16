@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/Style.css" type="text/css" />
-    <title>admin panel</title>
+    <link rel="icon" type="image/png" href="image\waterlogo.jpg">
+
+    <title>Reports</title>
 </head>
 
 <body>
@@ -67,9 +69,9 @@ require_once "./connect.php";
 
                         <thead>
                             <tr>
-                                <th>id</th>
+                                
                                 <th>firstname</th>
-                                <th>lastname</th>
+                                <th>laststname</th>
                                 <th>email</th>
                                 <th>phone</th>
                                 <th>issue</th>
@@ -88,14 +90,14 @@ $reports = $cmd->fetchAll();
 foreach($reports as $report) {
   echo '
           <tr>
-            <td>'.$report['id'].'</td>
+            
             <td>'.$report['firstname'].'</td>
             <td>'.$report['lastname'].'</td>
             <td>'.$report['email'].'</td>
             <td>'.$report['phone'].'</td>
             <td>'.$report['issue'].'</td>
             <td>'.$report['subject'].'</td>
-            <td><a href="delete-report.php?id='.$report['id'].'"><i class="fas fa-trash-alt"></i></a></td>
+            <td><a href="delete-report.php?firstname='.$report['firstname'].'"><i class="fas fa-trash-alt"></i></a></td>
             
           </tr>
 

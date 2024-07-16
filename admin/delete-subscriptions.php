@@ -2,9 +2,9 @@
 
 require_once './connect.php';
 
-if(isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = 'DELETE FROM subscriptions WHERE id = ?';
+if(isset($_GET['email'])) {
+    $id = $_GET['email'];
+    $sql = 'DELETE FROM subscriptions WHERE email = ?';
     $cmd = $db->prepare($sql);
 
     try{

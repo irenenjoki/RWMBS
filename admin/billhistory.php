@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/Style.css" type="text/css" />
-    <title>admin panel</title>
+    <link rel="icon" type="image/png" href="image\waterlogo.jpg">
+
+    <title>Bills</title>
 </head>
 
 <body>
@@ -67,7 +69,7 @@ require_once "./connect.php";
 
                         <thead>
                             <tr>
-                                <th>id</th>
+                                
                                 <th>meter number</th>
                                 <th>amount in Ksh</th>
                                 <th>payment mode</th>
@@ -77,7 +79,7 @@ require_once "./connect.php";
                         <tbody>
                             <?php
 
-$sql = 'SELECT * FROM bill_payments';
+$sql = 'SELECT * FROM process_payment';
 $cmd = $db->prepare($sql);
 $cmd->execute();
 
@@ -85,12 +87,11 @@ $bill_payment = $cmd->fetchAll();
 foreach($bill_payment as $bill_payments) {
   echo '
           <tr>
-            <td>'.$bill_payments['id'].'</td>
-            <td>'.$bill_payments['meter_number'].'</td>
-            <td>'.$bill_payments['amount_in_Ksh'].'</td>
-            <td>'.$bill_payments['payment_mode'].'</td>
+            <td>'.$bill_payments['meterNumber'].'</td>
+            <td>'.$bill_payments['paymentAmount'].'</td>
+            <td>'.$bill_payments['paymentMethod'].'</td>
             
-            <td><a href="delete-attendance.php?id='.$bill_payments['id'].'"><i class="fas fa-trash-alt"></i></a></td>
+            <td><a href="delete-attendance.php?meterNumber='.$bill_payments['meterNumber'].'"><i class="fas fa-trash-alt"></i></a></td>
             
           </tr>
 

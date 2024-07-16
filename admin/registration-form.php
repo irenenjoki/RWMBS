@@ -66,12 +66,14 @@ require_once "./connect.php";
                     <div class="form-side" id="myForm">
                         <form action="form.php" method="POST">
 
-                            <label for="fname"><b>first name</b></label><br>
-                            <input type="text" placeholder="Enter fname" name="first_name" required><br>
-                            <label for="lname"><b>last name</b></label><br>
-                            <input type="text" placeholder="Enter Lname" name="last_name" required><br>
-                            <label for="e-No"><b>employee number</b></label><br>
-                            <input type="text" placeholder="Enter employee number" name="employee_number" required><br>
+                            <label for="fname"><b> Name</b></label><br>
+                            <input type="text" placeholder="Enter Name" name="name" required><br>
+                            <label for="lname"><b>Email</b></label><br>
+                            <input type="text" placeholder="Enter Email" name="email" required><br>
+                            <label for="lname"><b>Phone</b></label><br>
+                            <input type="text" placeholder="Enter Phone" name="phone" required><br>
+                            <label for="e-No"><b>Meter Number</b></label><br>
+                            <input type="text" placeholder="Enter Meter Number" name="meterNumber" required><br>
 
                             <button type="submit" class="btn">submit</button>
                         </form>

@@ -2,9 +2,9 @@
 
 require_once './connect.php';
 
-if(isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = 'DELETE FROM report WHERE id = ?';
+if(isset($_GET['firstname'])) {
+    $id = $_GET['firstname'];
+    $sql = 'DELETE FROM report WHERE firstname = ?';
     $cmd = $db->prepare($sql);
 
     try{
@@ -17,4 +17,4 @@ if(isset($_GET['id'])) {
         echo $e->getMessage();
     }
 
-}
+} 

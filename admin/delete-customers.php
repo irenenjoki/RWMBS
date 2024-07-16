@@ -2,9 +2,9 @@
 
 require_once './connect.php';
 
-if(isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = 'DELETE FROM users WHERE id = ?';
+if(isset($_GET['name'])) {
+    $id = $_GET['name'];
+    $sql = 'DELETE FROM register WHERE name = ?';
     $cmd = $db->prepare($sql);
 
     try{

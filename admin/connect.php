@@ -1,6 +1,6 @@
 <?php
  $host = 'localhost';
- $dbname = 'rwmbs';
+ $dbname = 'water_management';
  $username= "root";
  $password = "";
 

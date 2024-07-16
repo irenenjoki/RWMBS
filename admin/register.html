@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+    <link rel="stylesheet" href="./css/Style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/d89edf4aa2.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="image\waterlogo.jpg">
+
+    <style>
+        .password-container {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-cont">
+        <form class="container-log" method="post" id="registration-form" action="register.php">
+            <h1>WaTer-serve.com</h1>
+            <h2>Register</h2>
+            <input type="text" id="username" name="username" placeholder="Username" required />
+            <div class="password-container">
+            <input type="password" id="password" name="password" placeholder="Password" required />
+            <i class="fas fa-eye input-icon" id="togglePassword"></i></div>
+            
+            <button type="submit" class="logbtn">Register</button>
+            <button onclick="window.location.href='signin.php'" class="btn">Already have an account</button>
+
+            <p id="errorMessage" style="color: red;"></p>
+        </form>
+    </div>
+    <script>
+        document.getElementById('registration-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+        
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+        
+            // Basic client-side validation
+            if (!username || !password) {
+                errorMessage.textContent = 'Please fill in all required fields.';
+                return;
+            }
+         // Password complexity validation
+         const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
+         if (!passwordRegex.test(password)) {
+             errorMessage.textContent = 'Password must be at least 8 characters long, contain at least one uppercase letter, and at least one symbol.';
+             return;
+         }
+            // Prepare and send AJAX request
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'register.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            // Redirect to a welcome or login page after successful registration
+                            window.location.href = 'index.php';
+                        } else {
+                            // Display error message based on response
+                            errorMessage.textContent = response.error || 'Registration failed.';
+                        }
+                    } catch (e) {
+                        errorMessage.textContent = 'Error parsing server response.';
+                    }
+                } else {
+                    errorMessage.textContent = 'Error: ' + xhr.statusText;
+                }
+            };
+            xhr.onerror = function () {
+                errorMessage.textContent = 'An error occurred during the request.';
+            };
+            xhr.send(`username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+        });
+        
+    </script>
+</body>
+
+</html>

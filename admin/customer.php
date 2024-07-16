@@ -8,7 +8,33 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/Style.css" type="text/css" />
-    <title>admin panel</title>
+    <link rel="icon" type="image/png" href="image\waterlogo.jpg">
+
+    <title>customers</title>
+    <style>
+   
+        .card {
+            width: 30%;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .box {
+            padding: 80px;
+        }
+        #card3 {
+  width: 80vw;
+  height: 130vh;
+  padding-bottom: 200px;
+}
+</style>
 </head>
 
 <body>
@@ -32,14 +58,13 @@
             <a href="billhistory.php">
                 <li><i class="fas fa-history"></i>&nbsp;Bill History</li>
             </a>
-
         </ul>
     </div>
     <div class="container">
         <div class="header">
             <div class="nav">
                 <div class="search">
-                    <input type="text" placeholder="search" />
+                    <input type="text" placeholder="Search" />
                     <button type="submit"><i class="fab fa-searchengin"></i></button>
                 </div>
                 <div class="user">
@@ -50,54 +75,82 @@
                 </div>
             </div>
         </div>
-        <?php
-require_once "./connect.php";
-?>
         <div class="content">
-            <div class="content-2">
-                <div class="recent-payments">
-                    <div class="title">
-                        <h2>customers</h2>
-                        <a href="#" class="btn">view All</a>
+            <h1>WELCOME ADMIN !!</h1>
+            <div class="cards">
+                <div class="card" id="card1">
+                    <div class="box">
+                        <?php
+                        require_once './connect.php';
+                        $query = $db->query('SELECT COUNT(*) as count FROM register');
+                        $row = $query->fetch(PDO::FETCH_ASSOC);
+                        echo '<h1>Registered customers</h1>';
+                        echo '<p>' . $row['count'] . '</p>';
+                        ?>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>username</th>
-                                <th>email</th>
-                                <th>phone</th>
-                                <th>password</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-
-$sql = 'SELECT * FROM users';
-$cmd = $db->prepare($sql);
-$cmd->execute();
-
-$user = $cmd->fetchAll();
-foreach($user as $users) {
-  echo '
-          <tr>
-            <td>'.$users['id'].'</td>
-            <td>'.$users['username'].'</td>
-            <td>'.$users['email'].'</td>
-            <td>'.$users['phone'].'</td>
-            <td>'.$users['password'].'</td>
-            <td><a href="delete-customers.php?id='.$users['id'].'"><i class="fas fa-trash-alt"></i></a>&nbsp; <a href="delete-attendance.php?id='.$users['id'].'" id="success" ><i class="fas fa-edit"></i></a> </td>
-            
-          </tr>
-
-  ';
-}
-
-?>
-                        </tbody>
-
-                    </table>
+                    <div class="icon-case">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="card" id="card2">
+                    <div class="box">
+                        <?php
+                        $query = $db->query('SELECT COUNT(*) as count FROM register');
+                        $row = $query->fetch(PDO::FETCH_ASSOC);
+                        echo '<h1>Daily visitors</h1>';
+                        echo '<p>' . $row['count'] . '</p>';
+                        ?>
+                    </div>
+                    <div class="icon-case">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="card" id="card3">
+                    <div class="box">
+                        <h1>Successful Registered customers</h1>
+                        <div class="content-2">
+                            <div class="recent-payments">
+                                <div class="title">
+                                    <h2>Customers</h2>
+                                    <a href="#" class="btn">View All</a>
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Meter Number</th>
+                                            <th>Password</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $sql = 'SELECT * FROM register';
+                                        $cmd = $db->prepare($sql);
+                                        $cmd->execute();
+                                        $users = $cmd->fetchAll(PDO::FETCH_ASSOC);
+                                        foreach ($users as $user) {
+                                            echo '
+                                                <tr>
+                                                    <td>' . htmlspecialchars($user['name']) . '</td>
+                                                    <td>' . htmlspecialchars($user['email']) . '</td>
+                                                    <td>' . htmlspecialchars($user['phonenumber']) . '</td>
+                                                    <td>' . htmlspecialchars($user['meterNumber']) . '</td>
+                                                    <td>' . htmlspecialchars($user['passwords']) . '</td>
+                                                    <td>
+                                                        <a href="delete-customers.php?name=' . htmlspecialchars($user['name']) . '"><i class="fas fa-trash-alt"></i></a>&nbsp;
+                                                    </td>
+                                                </tr>
+                                            ';
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
