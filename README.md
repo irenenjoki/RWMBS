@@ -1,3 +1,3 @@
 # RWMBS
 https://irenenjoki.github.io/RWMBS/
-![Screenshot (125)](https://github.com/irenenjoki/RWMBS/assets/85219856/6faab27c-9476-49a0-9233-b808f8c054b3)
+![Screenshot (226)](https://github.com/user-attachments/assets/c347f9e3-2f7c-49f8-8f7e-b35b403c423e)
