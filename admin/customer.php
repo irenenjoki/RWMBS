@@ -35,12 +35,12 @@
   padding-bottom: 200px;
 }
 </style>
-</head>
+</head> 
 
 <body>
     <div class="side-menu">
         <div class="brand-menu">
-            <label class="logo">WaTer-SerVe <small>.com </small></label>
+            <label class="logo">AquaTrack <small>.com </small></label>
         </div>
         <ul>
             <a href="index.php">
@@ -57,6 +57,9 @@
             </a>
             <a href="billhistory.php">
                 <li><i class="fas fa-history"></i>&nbsp;Bill History</li>
+            </a>
+            <a href="contact.php">
+                <li><i class="fas fa-comment"></i>&nbsp;User Messages</li>
             </a>
         </ul>
     </div>
@@ -121,7 +124,6 @@
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Meter Number</th>
-                                            <th>Password</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -138,7 +140,6 @@
                                                     <td>' . htmlspecialchars($user['email']) . '</td>
                                                     <td>' . htmlspecialchars($user['phonenumber']) . '</td>
                                                     <td>' . htmlspecialchars($user['meterNumber']) . '</td>
-                                                    <td>' . htmlspecialchars($user['passwords']) . '</td>
                                                     <td>
                                                         <a href="delete-customers.php?name=' . htmlspecialchars($user['name']) . '"><i class="fas fa-trash-alt"></i></a>&nbsp;
                                                     </td>

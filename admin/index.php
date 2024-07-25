@@ -40,7 +40,7 @@
 <body>
     <div class="side-menu">
         <div class="brand-menu">
-            <label class="logo">WaTer-SerVe <small>.com </small></label>
+            <label class="logo">AquaTrack <small>.com </small></label>
         </div>
         <ul>
             <a href="index.php">
@@ -57,6 +57,9 @@
             </a>
             <a href="billhistory.php">
                 <li><i class="fas fa-history"></i>&nbsp;Bill History</li>
+            </a>
+            <a href="contact.php">
+                <li><i class="fas fa-comment"></i>&nbsp;User Messages</li>
             </a>
         </ul>
     </div>

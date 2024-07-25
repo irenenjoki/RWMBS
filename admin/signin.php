@@ -39,6 +39,7 @@
 
             <button type="submit" class="logbtn">Login</button>
             <button onclick="window.location.href='register.html'" class="btn">New User</button>
+            <button type="submit" class="btn" onclick="window.location.href='/water/register.html'">Register As User</button>
 
             <p id="errorMessage" style="color: red;"></p>
         </form>

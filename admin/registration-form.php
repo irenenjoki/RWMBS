@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/Style.css" type="text/css" />
+    <link rel="icon" type="image/png" href="image\waterlogo.jpg">
+
     <title>admin panel</title>
 </head>
 
@@ -20,9 +22,7 @@
             <a href="index.php">
                 <li><i class="fas fa-grip-horizontal"></i>&nbsp;Dashboard</li>
             </a>
-            <a href="employee.php">
-                <li><i class="fas fa-user-tie"></i>&nbsp;Employees</li>
-            </a>
+           
             <a href="customer-report.php">
                 <li><i class="fab fa-wpforms"></i>&nbsp;Customer reports</li>
             </a>
@@ -31,6 +31,9 @@
             </a>
             <a href="billhistory.php">
                 <li><i class="fas fa-history"></i>&nbsp;Bill History</li>
+            </a>
+            <a href="contact.php">
+                <li><i class="fas fa-comment"></i>&nbsp;User Messages</li>
             </a>
         </ul>
     </div>
@@ -45,7 +48,7 @@
                     <a href="#" class="btn">Add New</a>
                 </div>
                 <div class="signout">
-                    <a href="#"><i class="fas fa-sign-out-alt"></i></a>
+                    <a href="signout.php"><i class="fas fa-sign-out-alt"></i></a>
                 </div>
             </div>
         </div>
@@ -59,7 +62,7 @@ require_once "./connect.php";
 
                 <div class="new-students">
                     <div class="title">
-                        <h2>EMPLOYEE FORM</h2>
+                        <h2>ADD NEW USER</h2>
                         <a href="#" class="btn">view All</a>
                     </div>
 
