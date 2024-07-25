@@ -1,201 +1,241 @@
 *{
-    margin: 0;
-    padding: 0;
-    font-family: "Open Sans", sans-serif;
+     margin: 0;
+     padding: 0;
+     font-family: "Open Sans", sans-serif;
 }
 body{
-    background-color: #F3F4F6;
+     background-color: #F3F4F6;
 }
 .bg-dark-transparent{
-    background-color:rgba(255, 255, 255, 0.726)
-    ;
+     background-color:rgba(255, 255, 255, 0.726)
+     ;
 }
 .fs-30{
-    font-size: 30px;
+     font-size: 30px;
 }
 .fs-50{
-    font-size: 50px;
+     font-size: 50px;
 }
 
 
 /* footer */
 
 footer{
-   background-color:rgb(0, 149, 199);
-   color: #150202;
-   font-weight: bold;
-   text-decoration-line: none;
-   text-align: center;
+	background-color:rgb(0, 139, 185);
+	color: #150202;
+	font-weight: bold;
+	text-decoration-line: none;
+	text-align: center;
 }
 
 .footer-link-item{
-    color: #000000;
-    font-weight: bold;
-    text-decoration-line: none;
+     color: #d3d3d3;
+     font-weight: bold;
+     text-decoration-line: none;
 }
 .footer-link-item:hover{
-    color: crimson;
-    font-weight: normal;
+     color: rgb(19, 19, 19);
+     font-weight: normal;
 }
 .icon-link{
-    color: rgb(5, 5, 5);
-    font-size: 40px;
-    font-weight: bold;
+     color: rgb(209, 32, 32);
+     font-size: 40px;
+     font-weight: bold;
 }
 .icon-link:hover{
-    color: crimson;
-    font-weight: normal;
+     color: rgb(19, 19, 19);
+     font-weight: normal;
 }
 .gotoupbtn{
-   position: fixed;
-   width: 50px;
-   height: 50px;
-   background: rgb(7, 240, 96);
-   bottom: 40px;
-   right: 50px;
-   border-radius: 2px;
-   text-align: center;
-   line-height: 50px;
-   color: #e3e3e3;
-   font-size: 30px;
-   text-decoration: none;
-   cursor: pointer;
-   transition: 0.5s;
-   z-index: 1;
+	position: fixed;
+	width: 50px;
+	height: 50px;
+	background: rgb(0, 117, 153);
+	bottom: 40px;
+	right: 50px;
+	border-radius: 2px;
+	text-align: center;
+	line-height: 50px;
+	color: #e3e3e3;
+	font-size: 30px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: 0.5s;
+	z-index: 1;
 }
 .gotoupbtn:hover{
-   font-size: 25px;
-   background: rgb(15, 73, 37);
-   color: rgb(78, 30, 30);
-   width: 48px;
-   height: 48px;
-   border-radius: 50%;
+	font-size: 25px;
+	background: rgb(15, 73, 37);
+	color: rgb(78, 30, 30);
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
 }
 .custom-btn{
-    color: rgb(5, 5, 5);
-    font-weight: bold;
+     color: rgb(5, 5, 5);
+     font-weight: bold;
 }
 .custom-btn:hover{
-    background-color: crimson;
-    font-weight: normal;
-    color: white;
+     background-color: crimson;
+     font-weight: normal;
+     color: white;
 }
 /* Home page */
 .circle-img{
-    border-radius: 50%;
+     border-radius: 50%;
 }
 .icon-style{
-    color: rgb(5, 5, 5);
-    font-size: 30px;
+     color: rgb(5, 5, 5);
+     font-size: 30px;
 }
 .shadow-bg{
-    background: rgb(228,228,228);
-    background: radial-gradient(circle, rgba(228,228,228,1) 17%, rgba(208,205,253,1) 18%, rgba(220,213,255,1) 30%, rgba(228,227,229,1) 37%, rgba(206,203,255,1) 55%);
+     background: rgb(228,228,228);
+     background: radial-gradient(circle, rgba(228,228,228,1) 17%, rgba(208,205,253,1) 18%, rgba(220,213,255,1) 30%, rgba(228,227,229,1) 37%, rgba(206,203,255,1) 55%);
 }
 .height-5{
-    height: 250px;
+     height: 250px;
 }
 
 /* menu */
 /* card */
 .card-menu{
-    background-color: #fff9e9;
+     background-color: #fff9e9;
 }
 .breadcrumb{
-    background-color: #f3eee5;
+     background-color: #f3eee5;
 }
 .breadcrumb-item{
-    color: #000000;
-    
+     color: #000000;
+     
 }
 
 /* about */
 
 #bg{
-   background-image: url('img/aboutus/png4.jpg');
-   background-attachment: fixed;
-   background-position: center;
+	background-image: url('img/aboutus/png4.jpg');
+	background-attachment: fixed;
+	background-position: center;
 }
+
 .about{
-   width: 100;
-   height: 100;
-   justify-content: center;
-   align-items: center;
-   margin-top: 150px;
+	width: 100;
+	height: 100;
+	justify-content: center;
+	align-items: center;
+	margin-top: 150px;
 }
 .about .content img{
-   width: 500px;
-   max-width: 100%;
-   box-shadow: 0 5px 15px 0px rgba(0,0,0, .5);
+	width: 600px;
+	max-width: 100%;
+	box-shadow: 0 5px 15px 0px rgba(0,0,0, .5);
 }
 
 .about .content img:hover{
-   width: 630px;
-   max-width: 130%;
+	width: 630px;
+	max-width: 130%;
 }
 .text{
-   width: 550px;
-   max-width: 100%;
+	width: 550px;
+	max-width: 100%;
 }
 
 .content{
-   width: 1280px;
-   max-width: 95%;
-   align-items: center;
-   justify-content: space-around;
+	width: 1280px;
+	max-width: 95%;
+	align-items: center;
+	justify-content: space-around;
 }
 .text h10{
-   color: #F8D210;
-   font-size: 50px;
-   margin-bottom: 40px;
-   margin-top: 40px;
+	color: #F8D210;
+	font-size: 50px;
+	margin-bottom: 40px;
+	margin-top: 40px;
 }
 .text p{
-   font-size: 18px;
-   margin-bottom: 70px;
+	font-size: 18px;
+	margin-bottom: 70px;
 
 }
 
 #aboutlink{
-   color: #4C5270;
-   text-decoration: underline;
-   font-size: 20px;
+	color: #4C5270;
+	text-decoration: underline;
+	font-size: 20px;
 }
 
 #aboutlink:hover{
-   color: #F8D210;
-   font-size: 20px;
+	color: #F8D210;
+	font-size: 20px;
 }
 
 
 /* contact us */
 
 .text-color{
-   color: rgb(28, 122, 199);
-   font-weight: bold;
+    color: rgb(28, 122, 199);
+    font-weight: bold;
 }
 .bg-bw{
-   background-color: rgb(209, 209, 209);
+    background-color: rgb(209, 209, 209);
 }
 span{
-   font-size: xx-large;
+	font-size: xx-large;
 }
 ::-webkit-scrollbar {
-   width: 8px; /* Width of vertical scrollbar */
-   height: 8px; /* Height of horizontal scrollbar */
- }
- 
- ::-webkit-scrollbar-track {
-   background: #ffffff; /* Track color */
-   border: 0px solid rgb(32, 139, 226); /* Track border */
-   border-radius: 5px; /* Rounded corners */
- }
- 
- ::-webkit-scrollbar-thumb {
-   background: rgb(32, 139, 226); /* Thumb color */
-   border-radius: 500px; /* Rounded corners */
- }
- 
- ::-webkit-scrollbar-thumb:hover {
-   background: #b3b3b3; /* Thumb color on hover */
- }
+	width: 8px; /* Width of vertical scrollbar */
+	height: 8px; /* Height of horizontal scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+	background: #ffffff; /* Track color */
+	border: 0px solid rgb(32, 139, 226); /* Track border */
+	border-radius: 5px; /* Rounded corners */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background: rgb(32, 139, 226); /* Thumb color */
+	border-radius: 500px; /* Rounded corners */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+	background: #b3b3b3; /* Thumb color on hover */
+  }
+  .contact-info {
+	text-align: center;
+	margin-bottom: 1rem;
+  }
+  .contact-info .icon {
+	font-size: 2rem;
+	color: #fff;
+	background-color: #007bff;
+	border-radius: 50%;
+	padding: 10px;
+	display: inline-block;
+	margin-bottom: 0.5rem;
+  }
+  .contact-info .text {
+	font-size: 1rem;
+	color: #343a40;
+  }
+  .contact-section {
+	padding: 3rem 0; /* Adjust padding as needed */
+  }
+  .contact-section .container {
+	max-width: 100%;
+  }
+  .spinner-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.8);
+	z-index: 1000; /* Make sure it's on top of other elements */
+}
+.spinner-border {
+	width: 3rem;
+	height: 3rem;
+}

@@ -320,11 +320,15 @@ option {
   background-color: rgba(255, 255, 255, 0.829);
   color: #000000;
 }
-/* Report form styling ends  */
+/* what we offer  */
+.custom-bg {
+  background-color: #116ac4; /* Change this to your desired background color */
+}
+
 /* reviews*/
 .row.shadow {
-  background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: rgba(226, 30, 30, 0.1);
+  box-shadow: 0 4px 8px rgba(226, 9, 9, 0.911);
 }
 
 .review-title {
@@ -351,7 +355,6 @@ option {
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.555);
-  color: #f5520c;
   width: 1000px;
   height: 474px;
   border-radius: 10px;
@@ -362,7 +365,6 @@ option {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("../Images/newsletter.jpg");
   background-size: cover;
 }
 .subscribe__title {
@@ -419,7 +421,7 @@ option {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #2e2e2e;
+  background: #ffffff;
   text-align: center;
   border-radius: 5px;
 }
@@ -537,7 +539,7 @@ label.file {
 }
 
 label.file:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.301);
 }
 
 input[type="file"] {

@@ -1,9 +1,11 @@
 <?php
-session_start();
-session_destroy(); // Destroy session data
-echo "Session destroyed. Redirecting...";
+//start the session
+session_start() ;
 
-// Redirect to login page
-header("Location: index.html");
-exit();
-?>
+//session variable is registered, the user is ready to logout
+session_unset() ;
+session_destroy ();
+
+// define here the next page address
+header( "Location: index.php" );
+exit;

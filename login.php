@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+header('Content-Type: application/json');
 // Database connection parameters
 $servername = "localhost";
 $username_db = "root"; // Database username
@@ -27,9 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows == 1) {
         // Successful login
-        session_start();
         $_SESSION['username'] = $username;
-        echo json_encode(['success' => true]);
+        echo json_encode(['success' => true, 'redirect_url' => 'dashboard.php']);
     } else {
         // Account doesn't exist
         echo json_encode(['success' => false, 'error' => 'Account does not exist. Please check your username, password, and meter number.']);

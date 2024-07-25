@@ -1,29 +1,10 @@
 <?php
-session_start();
-require_once "connect.php"; // Ensure this file exists and contains the $db variable
-
-// Initialize variables
-$bill_payment = [];
-$error_message = "";
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $meter_number = $_POST['meterNumber'];
-
-    try {
-        // Prepare SQL query to fetch data for the specified meter number
-        $sql = 'SELECT * FROM process_payment WHERE meterNumber = :meterNumber';
-        $cmd = $db->prepare($sql);
-        $cmd->bindParam(':meterNumber', $meter_number, PDO::PARAM_STR);
-        $cmd->execute();
-        $bill_payment = $cmd->fetchAll();
-    } catch (PDOException $e) {
-        $error_message = "Error fetching data: " . htmlspecialchars($e->getMessage());
-    }
-}
+require_once './connect.php';
+$query = $db->query('SELECT COUNT(*) as count FROM subscriptions');
+$row = $query->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,34 +16,92 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://kit.fontawesome.com/d89edf4aa2.js" crossorigin="anonymous"></script>
     <style>
         .action-button {
-    display: center;
-    justify-content: space-between;
-    margin-top: 20px;
+            display: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 1px 1px;
+            border: none;
+            border-radius: 50px;
+            background-color: #01080e;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        footer{
+	background-color:rgb(0, 139, 185);
+	color: #150202;
+	font-weight: bold;
+	text-decoration-line: none;
+	text-align: center;
 }
 
-.btn {
-    padding: 1px 1px;
-    border: none;
-    border-radius: 50px;
-    background-color: #01080e;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.footer-link-item1{
+     color: #d3d3d3;
+     font-weight: bold;
+     text-decoration-line: none;
+}
+.footer-link-item:hover{
+     color: rgb(19, 19, 19);
+     font-weight: normal;
+}
+.icon-link{
+     color: rgb(255, 255, 255);
+     font-size: 40px;
+     font-weight: bold;
+}
+.icon-link:hover{
+     color: rgb(19, 19, 19);
+     font-weight: normal;
 }
 
-.btn:hover {
-    background-color: #2980b9;
-}
+.floating-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 20px;
+            color: #000;
+            z-index: 1000;
+            background-color: #fff;
+            border: 2px solid #000;
+            border-radius: 50%;
+            padding: 10px;
+            text-align: center;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floating-icon .fa-bell {
+            font-size: 24px;
+        }
+
+        .floating-icon span {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .notifications {
+            background-color: black;
+            color: red;
+        }
     </style>
 </head>
-
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-dark border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading text-white">WBMS</div>
-            <div class="list-group list-group-flush">
-                <a href="landing.html" class="list-group-item list-group-item-action bg-dark text-white">
+        <div class="sidebar-heading" style="color: rgb(0, 149, 199);">AquaTrack</div>
+        <div class="list-group list-group-flush">
+                <a href="landing.php" class="list-group-item list-group-item-action bg-dark text-white">
                     <i class="fa fa-home"></i> Home
                 </a>
                 <a href="dashboard.php" class="list-group-item list-group-item-action bg-dark text-white">
@@ -80,7 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="logout.php" class="list-group-item list-group-item-action bg-dark text-white">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
-               
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -91,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="collapse navbar-collapse"></div>
             </nav>
             <div class="header">
-                <a class="navbar-brand" href="landing.html">
+                <a class="navbar-brand" href="landing.php">
                     <img src="Images/waterlogo.jpg" height="70" alt="Water logo">
                 </a>
             </div>
@@ -112,48 +150,137 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <hr>
 
-                            <?php
-                            if (!empty($error_message)) {
-                                echo "<p>$error_message</p>";
-                            } elseif (!empty($bill_payment)) {
-                                echo '<h2>Bill History</h2>';
-                                echo '<table class="table">';
-                                echo '<thead><tr><th>Meter Number</th><th>Amount in Ksh</th><th>Payment Mode</th></tr></thead>';
-                                echo '<tbody>';
-                                foreach ($bill_payment as $bill_payments) {
-                                    echo '<tr>';
-                                    echo '<td>' . htmlspecialchars($bill_payments['meterNumber']) . '</td>';
-                                    echo '<td>' . htmlspecialchars($bill_payments['paymentAmount']) . '</td>';
-                                    echo '<td>' . htmlspecialchars($bill_payments['paymentMethod']) . '</td>';
-                                    echo '</tr>';
-                                }
-                                echo '</tbody></table>';
-                            }
-                            ?>
+                            <!-- PHP script output will go here -->
+                            <div id="billingInfo">
+                                <?php
+                                // Check if meterNumber is set and not empty
+                                if(isset($_POST['meterNumber']) && !empty($_POST['meterNumber'])) {
+                                    // Sanitize input to prevent SQL injection (you can expand this based on your needs)
+                                    $meterNumber = htmlspecialchars($_POST['meterNumber']);
 
-                            <button class="btn btn-primary action-button" onclick="printPage()">Print</button>
+                                    // Replace with your actual database connection details
+                                    $servername = "localhost";
+                                    $username = "root";
+                                    $password = "";
+                                    $dbname = "water_management";
+
+                                    // Create connection
+                                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                    // Check connection
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
+
+                                    // Prepare SQL statement with placeholders
+                                    $sql = "SELECT * FROM process_payment WHERE meterNumber = ?";
+
+                                    // Use prepared statement to prevent SQL injection
+                                    $stmt = $conn->prepare($sql);
+                                    $stmt->bind_param("s", $meterNumber); // "s" indicates the type of the parameter (string)
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+
+                                    // Check if any rows were returned
+                                    if ($result->num_rows > 0) {
+                                        // Start creating the table
+                                        echo '<table class="table table-striped">';
+                                        echo '<thead>';
+                                        echo '<tr>';
+                                        echo '<th scope="col">Meter Number</th>';
+                                        echo '<th scope="col">Payment Method</th>';
+                                        echo '<th scope="col">Payment Amount</th>';
+                                        echo '<th scope="col">TransactionDate</th>';
+                                        echo '</tr>';
+                                        echo '</thead>';
+                                        echo '<tbody>';
+
+                                        // Output data of each row
+                                        while($row = $result->fetch_assoc()) {
+                                            echo '<tr>';
+                                            echo '<td>' . $row["meterNumber"] . '</td>';
+                                            echo '<td>' . $row["paymentMethod"] . '</td>';
+                                            echo '<td>sh' . $row["paymentAmount"] . '</td>';
+                                            echo '<td>' . $row["TransactionDate"] . '</td>';
+                                            echo '</tr>';
+                                        }
+
+                                        echo '</tbody>';
+                                        echo '</table>';
+                                    } else {
+                                        echo "No billing information found for meter number: " . $meterNumber;
+                                    }
+
+                                    // Close prepared statement and database connection
+                                    $stmt->close();
+                                    $conn->close();
+
+                                } else {
+                                    echo "Enter your meter number above to view billing information.";
+                                }
+                                ?>
+                                 <button class="btn btn-primary action-button" onclick="printPage()">Print</button>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <img src="https://wallpaperkenya.co.ke/wp-content/uploads/2022/05/minimal-morning-landscape-8k-gx-scaled.jpg" 
+    style="width: 100%; height: 300px; object-fit: cover;">
             <footer>
-                <div class="footer">
-                    <h5>Find Us On</h5>
-                    <div class="w3-xlarge w3-padding-16">
-                        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-                        <i class="fa fa-instagram w3-hover-opacity"></i>
-                        <i class="fa fa-twitter w3-hover-opacity"></i>
-                        <i class="fa fa-linkedin w3-hover-opacity"></i>
-                    </div>
-                    <p>Powered by <a href="mailto:irenewaweru9@gmail.com" target="_blank" class="w3-hover-text-green">RWMBS</a></p>
-                    &copy; 2024 RWMBS. All rights reserved.
+            <div class="container">
+                <div class="row">
+                  <div class="col-lg-4 col-md-12 text-center">
+                    <hr class="pt-5 mt-5">
+                  </div>
+                  <div class="col-lg-4 col-md-12 text-center">
+                    <br>
+                <span>AquaTrack</span>
+                  </div>
+                  <div class="col-lg-4 col-md-12 text-center">
+                    <hr class="pt-5 mt-5">
+                  </div>
+                </div> <!--row end--><br><br>
+            <p>If you have any questions, do not hesitate to ask them.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-sm-10 px-2 py-3">
+                  <div class="d-flex justify-content-between py-3 my-2">
+                    <a href="https://twitter.com/irinnahrin" class="icon-link"><i class="fab fa-twitter"></i></a>
+                                <a href="https://web.whatsapp.com/" class="icon-link"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://www.instagram.com/irene.waweru.100/" class="icon-link"><i class="fab fa-instagram"></i></a>
+                                <a href="www.facebook.com" class="icon-link"><i class="fab fa-facebook"></i></a>
+                  </div>
                 </div>
-            </footer>
+              </div>
+            <i class="fa fa-map-marker w3-text-red" style="width:30px"></i> Nairobi,Kenya<br><br>
+            <i class="fa fa-phone w3-text-red" style="width:30px"></i> Phone: 0711791575<br>
+            <div class="py-2 p-1 m-2">
+                <i class="fas fa-envelope-open-text fs-30"></i>
+                <a href="mailto:irenewaweru9@gmail.com"><span class="footer-link-item1"> aquatrackafrica@gmail.com</span></a>
+              </div>
+            <p id="current-year"></p> 
+        </footer>
         </div>
     </div>
+   <a href="view_responses.php" class="floating-icon notifications">
+    <span>Notifications</span>
+    <i class="fas fa-bell"></i>
+    <span>
+        <?php
+        if (isset($row['count'])) {
+            echo htmlspecialchars($row['count']);
+        }
+        ?>
+    </span>
+</a>
+
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="index.js"></script>
 </body>
 
 </html>

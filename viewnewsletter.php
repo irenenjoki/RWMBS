@@ -74,24 +74,24 @@
             color: #007bff;
             border-bottom: 2px solid #007bff;
             padding-bottom: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .email-field {
-            margin-bottom: 10px; /* Adjusted spacing */
+            margin-bottom: 10px; /* Reduce the space between fields */
         }
 
         .email-field label {
             font-weight: bold;
             color: #333;
-            display: block; /* Ensures label is on its own line */
-            margin-bottom: 5px; /* Reduced space below the label */
+            margin-bottom: 5px; /* Reduce space below the label */
+            display: block; /* Ensure label is on its own line */
         }
 
         .email-field p {
-            margin: 0; /* Remove default margin */
+            margin: 0; /* Remove default margin for paragraphs */
             color: #555;
-            padding: 2px 0; /* Slight padding for spacing */
+            padding: 5px 0; /* Add slight padding to adjust spacing */
         }
 
         .btn-primary {
@@ -101,16 +101,16 @@
             text-decoration: none;
             border-radius: 5px;
             display: inline-block;
-            text-align: center;
             margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>View Responses</h1>
-        <form action="view_responses.php" method="POST">
+        <h1>Updates and News</h1>
+        <form action="viewnewsletter.php" method="POST">
             <label for="email">Enter Your Email:</label>
             <input type="text" id="email" name="email" placeholder="Your email...">
             <button type="submit">Search</button>
@@ -136,7 +136,7 @@
             }
 
             // Prepare SQL statement to fetch responses by email
-            $stmt = $conn->prepare("SELECT id, firstname, lastname, email, phone, issue, subject, admin_response, response_timestamp FROM report WHERE email = ?");
+            $stmt = $conn->prepare("SELECT id, email, alerts, alert_timestamp, response_timestamp FROM subscriptions WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -144,19 +144,19 @@
             // Check if results are found
             if ($result->num_rows > 0) {
                 echo "<div class='email-container'>";
-                echo "<div class='email-header'>Response Details</div>";
+                echo "<div class='email-header'>Updates and News for Email: $email</div>";
                 while ($row = $result->fetch_assoc()) {
-                    $timestamp = new DateTime($row["response_timestamp"]);
-                    $formattedDateTime = $timestamp->format('F j, Y \a\t g:i A');
+                    $alertTimestamp = new DateTime($row["alert_timestamp"]);
+                    $formattedAlertTime = $alertTimestamp->format('F j, Y \a\t g:i A');
+                    
+                    $responseTimestamp = new DateTime($row["response_timestamp"]);
+                    $formattedResponseTime = $responseTimestamp->format('F j, Y \a\t g:i A');
 
-                    echo "<div class='email-field'><label>First Name:</label><p>" . htmlspecialchars($row["firstname"]) . "</p></div>";
-                    echo "<div class='email-field'><label>Last Name:</label><p>" . htmlspecialchars($row["lastname"]) . "</p></div>";
+                    echo "<div class='email-field'><label>ID:</label><p>" . htmlspecialchars($row["id"]) . "</p></div>";
                     echo "<div class='email-field'><label>Email:</label><p>" . htmlspecialchars($row["email"]) . "</p></div>";
-                    echo "<div class='email-field'><label>Phone:</label><p>" . htmlspecialchars($row["phone"]) . "</p></div>";
-                    echo "<div class='email-field'><label>Issue:</label><p>" . htmlspecialchars($row["issue"]) . "</p></div>";
-                    echo "<div class='email-field'><label>Subject:</label><p>" . htmlspecialchars($row["subject"]) . "</p></div>";
-                    echo "<div class='email-field'><label>Admin Response:</label><p>" . htmlspecialchars($row["admin_response"]) . "</p></div>";
-                    echo "<div class='email-field'><label>Response Date and Time:</label><p>" . $formattedDateTime . "</p></div>";
+                    echo "<div class='email-field'><label>Alerts:</label><p>" . htmlspecialchars($row["alerts"]) . "</p></div>";
+                    echo "<div class='email-field'><label>Alert Time:</label><p>" . $formattedAlertTime . "</p></div>";
+                    echo "<div class='email-field'><label>Response Time:</label><p>" . $formattedResponseTime . "</p></div>";
                 }
                 echo "</div>";
             } else {
@@ -168,9 +168,9 @@
             $conn->close();
         }
         ?>
+        
         <a href="landing.php" class="btn-primary">HOME</a>
     </div>
 </body>
 
 </html>
-   

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Alert message and redirect to landing.html
         echo "<script>alert('Message sent successfully!');</script>";
-        echo "<script>window.location.replace('landing.html');</script>";
+        echo "<script>window.location.replace('landing.php');</script>";
         exit; // Ensure no further code execution after redirection
     } else {
         die('Error executing statement: ' . $stmt->error);

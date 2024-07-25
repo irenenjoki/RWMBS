@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_package_v0.16/favicon-16x16.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="icon" type="image/png" href="Images\waterlogo.jpg">
+
+    <title >About us </title>
+    <style>
+        body {
+          font: 400 15px Lato, sans-serif;
+          line-height: 1.8;
+          color: #818181;
+        }
+        h2 {
+          font-size: 24px;
+          text-transform: uppercase;
+          color: #303030;
+          font-weight: 600;
+          margin-bottom: 30px;
+        }
+        h4 {
+          font-size: 19px;
+          line-height: 1.375em;
+          color: #303030;
+          font-weight: 400;
+          margin-bottom: 30px;
+        }  
+        .jumbotron {
+          background-color: rgb(0, 149, 199);
+          color: #fff;
+          padding: 100px 25px;
+          font-family: Montserrat, sans-serif;
+        }
+        .container-fluid {
+          padding: 60px 50px;
+        }
+        .bg-grey {
+          background-color: #f6f6f6;
+        }
+        .logo-small {
+          color: rgb(0, 149, 199);
+          font-size: 50px;
+        }
+        .logo {
+          color: rgb(0, 149, 199);
+          font-size: 200px;
+        }
+    
+        .logo2 {
+          color: rgb(0, 149, 199);
+          font-size: 30px;
+        }
+        .navbar {
+    min-height: 100px; /* Adjust this value to fit the image */
+}
+.navbar-brand img {
+    max-height: 70px; /* Ensures the image height fits within the navbar */
+    width: auto; /* Maintain aspect ratio */
+    margin-top: -25px; /* Adjust as needed to align image */}
+
+        .thumbnail {
+          padding: 0 0 15px 0;
+          border: none;
+          border-radius: 0;
+        }
+        .thumbnail img {
+          width: 100%;
+          height: 100%;
+          margin-bottom: 10px;
+        }
+        .carousel-control.right, .carousel-control.left {
+          background-image: none;
+          color: rgb(0, 149, 199);
+        }
+        .carousel-indicators li {
+          border-color: rgb(0, 149, 199);
+        }
+        .carousel-indicators li.active {
+          background-color: rgb(0, 149, 199);
+        }
+        .item h4 {
+          font-size: 19px;
+          line-height: 1.375em;
+          font-weight: 400;
+          font-style: italic;
+          margin: 70px 0;
+        }
+        .item span {
+          font-style: normal;
+        }
+        .panel {
+          border: 1px solid rgb(0, 149, 199);
+          border-radius:0 !important;
+          transition: box-shadow 0.5s;
+        }
+        .panel:hover {
+          box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+        }
+        .panel-footer .btn:hover {
+          border: 1px solid rgb(0, 149, 199);
+          background-color: #fff !important;
+          color: rgb(0, 149, 199);
+        }
+        .panel-heading {
+          color: #fff !important;
+          background-color: rgb(0, 149, 199) !important;
+          padding: 25px;
+          border-bottom: 1px solid transparent;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+          border-bottom-right-radius: 0px;
+        }
+        .panel-footer {
+          background-color: white !important;
+        }
+        .panel-footer h3 {
+          font-size: 32px;
+        }
+        .panel-footer h4 {
+          color: #aaa;
+          font-size: 14px;
+        }
+        .panel-footer .btn {
+          margin: 15px 0;
+          background-color: rgb(0, 149, 199);
+          color: #fff;
+        }
+        
+       
+        .slideanim {visibility:hidden;}
+        .slide {
+          animation-name: slide;
+          -webkit-animation-name: slide;
+          animation-duration: 1s;
+          -webkit-animation-duration: 1s;
+          visibility: visible;
+        }
+        @keyframes slide {
+          0% {
+            opacity: 0;
+            transform: translateY(70%);
+          } 
+          100% {
+            opacity: 1;
+            transform: translateY(0%);
+          }
+        }
+        @-webkit-keyframes slide {
+          0% {
+            opacity: 0;
+            -webkit-transform: translateY(70%);
+          } 
+          100% {
+            opacity: 1;
+            -webkit-transform: translateY(0%);
+          }
+        }
+        @media screen and (max-width: 768px) {
+          .col-sm-4 {
+            text-align: center;
+            margin: 25px 0;
+          }
+          .btn-lg {
+            width: 100%;
+            margin-bottom: 35px;
+          }
+        }
+        @media screen and (max-width: 480px) {
+          .logo {
+            font-size: 150px;
+          }
+        }
+        </style>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div  style="background-image: url(https://gdesign-studio.com/wp-content/uploads/2019/12/about-us.jpg); background-attachment: fixed; height: 600px; width: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
+            <!-- navbar -->
+            <nav class="nav navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bg-dark-transparent">
+                <div class="container">
+                    <a class="navbar-brand" href="landing.php">
+                        <img src="Images/waterlogo.jpg" height="70" alt="track Logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="landing.php">HOME</a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="contact.html">CONTACT US</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: rgb(0, 149, 199);" href="about.html">ABOUT US</a>
+                            </li>
+                        </ul>
+                    </div> <!--collapse end-->
+                </div> <!--container end-->
+            </nav> <!--navbar end-->
+            
+            
+            <div class="container flex-column d-flex justify-content-center"style=" height: 600px;">
+                <div class="text-center py-4" >
+                    <h1 class="text-white py-3">
+                        <span class="font-weight-bold" style="color:rgb(255, 255, 255); font-size: 100px;" ,>About US</span>
+                    </h1>
+                </div>
+                <a href="#" class="gotoupbtn"><i class="far fa-arrow-alt-circle-up"></i></a>
+            </div>
+        </div>
+    </header> <!--header end-->
+    <div id="about" class="container-fluid">
+        <div class="row">
+          <div class="col-sm-8">
+            <h2 class="blue-text">About AquaTrack Kenya</h2><br>
+            <h4>At AquaTrack, we are committed to enhancing water management through our advanced remote 
+                billing system. Our innovative approach ensures that handling your water services is 
+                straightforward and efficient, providing a seamless experience for all users.</h4><br>
+
+            <p>Our platform is designed to simplify communication, allowing users to effortlessly report 
+                water issues, request new connections, and provide valuable feedback. We prioritize reliability
+                 and user-friendliness, ensuring that every interaction with our system is smooth and effective. 
+                 By focusing on these core values, we aim to make water management more accessible and efficient 
+                 for everyone. Our dedication to continuous improvement means we are always looking for ways to 
+                 enhance our services and meet your needs more effectively. Whether you’re reporting a problem or 
+                 seeking assistance,AquaTrack kenya is here to support you with a responsive and reliable service. 
+                 Join us in making water management easier and more efficient for all.</p>
+
+                 <a href="contact.html">
+                    <button class="btn btn-default btn-lg">Get in Touch</button>
+                </a>
+          </div>
+          <div class="col-sm-4">
+            <span class="fa fa-users" style="font-size: 300px; color: #00bfff;"></span> <!-- Water droplet icon -->
+          </div>
+        </div>
+      </div>
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-globe logo slideanim"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>What We Stand For</h2><br>
+      <h4><strong>MISSION:</strong> Our mission is to provide an innovative and efficient water 
+        management system that enhances user experience and reliability. We are committed to continuous 
+        improvement and ensuring that our platform meets the highest standards of service. By focusing on 
+        ease of use and responsiveness, we strive to make managing water services simple and effective 
+        for everyone.</h4><br>
+
+      <p><strong>VISION:</strong> Our vision is to revolutionize water management through 
+        cutting-edge technology and exceptional service. We aim to set new standards in the 
+        industry by delivering a platform that not only meets but exceeds user expectations. 
+        Our goal is to create a future where water management is seamlessly integrated into everyday life,
+         making it more accessible and efficient. Through our commitment to excellence and innovation, we 
+         seek to inspire trust and satisfaction among our users, ensuring that our solutions are always at the 
+         forefront of the industry.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Services Section) -->
+<div id="services" class="container-fluid text-center">
+  <h2>SERVICES</h2>
+  <h4>What we offer</h4>
+  <br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+        <span class="fas fa-dollar-sign logo-small"></span> <!-- Money icon -->
+      <h4>EFFICIENT BILLING</h4>
+      <p>Our system provides a streamlined and automated billing process, ensuring accurate and timely invoices for water usage. Enjoy the convenience of digital billing and easy payment management.</p>
+    </div>
+    <div class="col-sm-4">
+        <span class="fas fa-receipt logo-small"></span> <!-- Another icon for efficient billing -->
+      <h4>REAL-TIME REPORTING</h4>
+      <p>Effortlessly report any water-related issues through our user-friendly interface. Our system ensures that your reports are received and addressed promptly by the relevant teams.</p>
+    </div>
+    <div class="col-sm-4">
+        <span class="fas fa-link logo-small"></span> <!-- Link icon -->
+      <h4>SEAMLESS CONNECTION REQUESTS</h4>
+      <p>Request new water connections or service upgrades with ease. Our platform simplifies the process, allowing you to track the status of your requests from start to finish.</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-leaf logo-small"></span>
+      <h4>USER-FRIENDLY FEEDBACK</h4>
+      <p>Provide feedback and suggestions directly through our platform. We value your input and use it to continuously enhance our services and address any concerns you may have.</p>
+    </div>
+    <div class="col-sm-4">
+        <span class="fas fa-comment-dots logo-small"></span> <!-- Messaging icon -->
+      <h4>RELIABLE COMMUNICATION</h4>
+      <p>Stay informed with real-time updates and notifications regarding your water services. Our system ensures clear and consistent communication between you and our support team.</p>
+    </div>
+    <div class="col-sm-4">
+        <span class="fas fa-headset logo-small"></span> <!-- 24/7 Support icon -->
+      <h4 style="color:#303030;">24/7 SUPPORT</h4>
+      <p>Access our support team at any time for assistance with your water management needs. We are dedicated to providing reliable support and resolving any issues quickly and efficiently.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div id="portfolio" class="container-fluid text-center bg-grey">
+  <h2>Clients</h2><br>
+  <h4>Who we are currently working with</h4>
+  <div class="row text-center slideanim">
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="https://images-platform.99static.com/45q3G2PL1BZ_irvB3qPC_ZW1doA=/500x500/top/smart/99designs-contests-attachments/9/9509/attachment_9509006" alt="Paris" width="400" height="100%">
+        <p><strong>InLineWaterSolutions</strong></p>
+        <p>Yes, we are taking care of their customers </p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="https://marketplace.canva.com/EAFCJAK9b4o/1/0/1600w/canva-blue-modern-water-company-logo-type-gr6e524qrnM.jpg" alt="New York" width="400" height="100%">
+        <p><strong>Hydro</strong></p>
+        <p>We are handling their Billing </p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="https://i.pinimg.com/736x/53/54/79/535479c536c1fa167996b91e695be400.jpg" alt="San Francisco" width="400" height="100%">
+        <p><strong>Super Water</strong></p>
+        <p>Yes, we are handling their communications</p>
+      </div>
+    </div>
+  </div><br>
+  
+  <h2>What our customers say</h2>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+      <li data-target="#myCarousel" data-slide-to="5"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <h4>"The remote billing system has significantly simplified managing our water services. It's highly efficient "<br><span>Grace Wanjiru, Homeowner, Nairobi</span></h4>
+            </div>
+            <div class="item">
+              <h4>"I am very impressed with how quickly I can report issues and receive solutions. The system is incredibly reliable!"<br><span>John Mwangi, Property Manager, Mombasa</span></h4>
+            </div>
+            <div class="item">
+              <h4>"The platform’s ease of use is remarkable. It has made managing my water services straightforward and stress-free!"<br><span>Mary Achieng, Business Owner, Kisumu</span></h4>
+            </div>
+            <div class="item">
+              <h4>"Reporting problems and requesting services is now so easy. I highly recommend this system to everyone!"<br><span>James Otieno, Tenant, Eldoret</span></h4>
+            </div>
+            <div class="item">
+              <h4>"The system’s simplicity and efficiency have exceeded my expectations. I am very satisfied with the service provided!"<br><span class="small-text">Fatuma Mohamed, Resident, Nakuru</span></h4>
+            </div>
+          </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<!-- Container (Pricing Section) -->
+<div id="pricing" class="container-fluid">
+    <div class="text-center">
+      <h2>Pricing</h2>
+      <h4>Choose a payment plan that works for you</h4>
+    </div>
+    <div class="row slideanim">
+      <div class="col-sm-4 col-xs-12">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1>Basic</h1>
+          </div>
+          <div class="panel-body">
+            <p><strong>10</strong> Monthly Reports</p>
+            <p><strong>5</strong> Service Requests</p>
+            <p><strong>2</strong> User Accounts</p>
+            <p><strong>1</strong> Support Ticket</p>
+            <p><strong>Endless</strong> Basic Feedback</p>
+          </div>
+          <div class="panel-footer">
+            <h3>KSh 2,660</h3>
+            <h4>per month</h4>
+            <a href="contact.html" class="btn btn-lg">Sign Up</a>
+          </div>
+        </div>      
+      </div>     
+      <div class="col-sm-4 col-xs-12">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1>Pro</h1>
+          </div>
+          <div class="panel-body">
+            <p><strong>30</strong> Monthly Reports</p>
+            <p><strong>15</strong> Service Requests</p>
+            <p><strong>5</strong> User Accounts</p>
+            <p><strong>3</strong> Support Tickets</p>
+            <p><strong>Endless</strong> Advanced Feedback</p>
+          </div>
+          <div class="panel-footer">
+            <h3>KSh 4,060</h3>
+            <h4>per month</h4>
+            <a href="contact.html" class="btn btn-lg">Sign Up</a>
+          </div>
+        </div>      
+      </div>       
+      <div class="col-sm-4 col-xs-12">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1>Premium</h1>
+          </div>
+          <div class="panel-body">
+            <p><strong>Unlimited</strong> Monthly Reports</p>
+            <p><strong>Unlimited</strong> Service Requests</p>
+            <p><strong>Unlimited</strong> User Accounts</p>
+            <p><strong>Unlimited</strong> Support Tickets</p>
+            <p><strong>Endless</strong> Comprehensive Feedback</p>
+          </div>
+          <div class="panel-footer">
+            <h3>KSh 6,860</h3>
+            <h4>per month</h4>
+            <a href="contact.html" class="btn btn-lg">Sign Up</a>
+          </div>
+        </div>      
+      </div>    
+    </div>
+  </div>
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">FEEDBACK</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>We're eager to hear from you! Your feedback is crucial in helping us enhance our services .Suggestions, questions, or experiences to share, your input matters greatly to us. </p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Nairobi, Kenya</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +254711791575</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> aquatrackafrica@gmail.com</p>
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image of location/map -->
+<img src="https://wallpaperkenya.co.ke/wp-content/uploads/2022/05/minimal-morning-landscape-8k-gx-scaled.jpg" 
+     style="width: 100%; height: 300px; object-fit: cover;">
+<div>
+    <footer>
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-md-12 text-center">
+                <hr class="pt-5 mt-5">
+              </div>
+              <div class="col-lg-4 col-md-12 text-center">
+                
+            <span>AquaTrack</span>
+              </div>
+              <div class="col-lg-4 col-md-12 text-center">
+                <hr class="pt-5 mt-5">
+              </div>
+            </div> <!--row end--><br><br>
+        <p>If you have any questions, do not hesitate to ask them.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-sm-10 px-2 py-3">
+              <div class="d-flex justify-content-between py-3 my-2">
+                <a href="https://twitter.com/irinnahrin" class="icon-link"><i class="fab fa-twitter"></i></a>
+                            <a href="https://web.whatsapp.com/" class="icon-link"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/irene.waweru.100/" class="icon-link"><i class="fab fa-instagram"></i></a>
+                            <a href="www.facebook.com" class="icon-link"><i class="fab fa-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+        <i class="fa fa-map-marker w3-text-red" style="width:30px"></i> Nairobi,Kenya<br><br>
+        <i class="fa fa-phone w3-text-red" style="width:30px"></i> Phone: 0711791575<br>
+        <div class="py-2 p-1 m-2">
+            <i class="fas fa-envelope-open-text fs-30"></i>
+            <a href="mailto:aquatrackafrica@gmail.com"><span class="footer-link-item"> aquatrackafrica@gmail.com</span></a>
+          </div>
+    </footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+</body>
+</html>

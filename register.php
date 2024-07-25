@@ -1,13 +1,26 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Sanitize and validate input
-    $name = $_POST['name'];
-    $password = $_POST['passwords']; // Plain text password
-    $email = $_POST['email'];
-    $phonenumber = $_POST['phonenumber'];
-    $meter_number = $_POST['meterNumber'];
+    $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
+    $password = trim($_POST['passwords']); // Plain text password
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $phonenumber = filter_var(trim($_POST['phonenumber']), FILTER_SANITIZE_STRING);
+    $meter_number = filter_var(trim($_POST['meterNumber']), FILTER_SANITIZE_STRING);
+
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo json_encode(['success' => false, 'error' => 'Invalid email format']);
+        exit();
+    }
+
+    // Validate other fields (you can add more validation if needed)
+    if (empty($name) || empty($password) || empty($phonenumber) || empty($meter_number)) {
+        echo json_encode(['success' => false, 'error' => 'All fields are required']);
+        exit();
+    }
 
     $servername = "localhost";
     $db_username = "root"; // Replace with your database username
@@ -63,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode(['success' => false, 'error' => 'Prepare failed: ' . $conn->error]);
         exit();
     }
-    $insert_stmt->bind_param("ssssi", $name, $password, $email, $phonenumber, $meter_number);
+    $insert_stmt->bind_param("sssss", $name, $password, $email, $phonenumber, $meter_number);
     if ($insert_stmt->execute()) {
         echo json_encode(['success' => true, 'message' => 'Account created successfully.']);
     } else {
