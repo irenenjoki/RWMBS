@@ -7,5 +7,5 @@ session_unset() ;
 session_destroy ();
 
 // define here the next page address
-header( "Location: index.php" );
+header( "Location: sign.php" );
 exit;

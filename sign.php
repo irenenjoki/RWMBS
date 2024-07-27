@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Water Billing Management System</title>
+    <title>Water Billing Management System</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="Images/waterlogo.jpg">
@@ -18,7 +19,7 @@
             justify-content: center;
             align-items: center;
         }
-        .register-box {
+        .login-box {
             background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
@@ -52,50 +53,37 @@
         .btn:hover {
             background: #444;
         }
-        .footer {
-            text-align: center;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+        .new-user {
+            margin-top: 20px;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <div class="register-box">
-            <h1>Register</h1>
-            <form id="register-form">
+        <div class="login-box">
+            <h1>Water Billing Management System</h1>
+            <form id="login" action="login.php" method="post">
                 <div class="textbox">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username" id="username" name="name" required>
-                </div>
-                <div class="textbox">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" id="email" name="email" required>
+                    <input type="text" placeholder="Name" id="username" name="name" required>
                 </div>
                 <div class="textbox">
                     <i class="fas fa-eye" id="togglePassword"></i>
                     <input type="password" placeholder="Password" id="password" name="passwords" required>
                 </div>
                 <div class="textbox">
-                    <i class="fas fa-phone"></i>
-                    <input type="text" placeholder="Phone Number" id="phonenumber" name="phonenumber" required>
-                </div>
-                <div class="textbox">
                     <i class="fas fa-tachometer-alt"></i>
                     <input type="text" placeholder="Meter Number" id="meterNumber" name="meterNumber" required>
                 </div>
-                <button type="submit" class="btn">Register</button>
-            </form>
+                <button type="submit" class="btn">Sign In</button>
+            </form><br>
             <p id="errorMessage" style="color: red;"></p>
-            <h2>Already have an account? Login <a href="sign.php">here</a>.</h2>
-            <button type="submit" class="btn" onclick="window.location.href='admin/register.html'">Register As Admin</button>
-        </div>
+            <p id="forgotPasswordMessage" style="display: none; color: red;">Forgot your password?</p>
+            <div class="new-user">
+                <button onclick="window.location.href='register.html'" class="btn">New User</button>
+            </div>
+        </div> 
     </div>
-    
     <script>
         // Toggle password visibility
         const togglePassword = document.getElementById('togglePassword');
@@ -109,51 +97,53 @@
         });
 
         // Validate and submit form using AJAX
-        document.getElementById('register-form').addEventListener('submit', function (e) {
+        document.getElementById('login').addEventListener('submit', function (e) {
             e.preventDefault(); // Prevent default form submission
 
             const username = document.getElementById('username').value.trim();
-            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value.trim();
-            const phoneNumber = document.getElementById('phonenumber').value.trim();
             const meterNumber = document.getElementById('meterNumber').value.trim();
             const errorMessage = document.getElementById('errorMessage');
+            const forgotPasswordMessage = document.getElementById('forgotPasswordMessage');
 
             // Basic client-side validation
-            if (!username || !email || !password || !phoneNumber || !meterNumber) {
+            if (!username || !password || !meterNumber) {
                 errorMessage.textContent = 'Please fill in all required fields.';
+                forgotPasswordMessage.style.display = 'none';
                 return;
-            }
-
-            // Password complexity validation
-            const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
-            if (!passwordRegex.test(password)) {
-                errorMessage.textContent = 'Password must be at least 8 characters long, contain at least one uppercase letter, and at least one symbol.';
-                return;
-            }
-
+            } 
+             // Password complexity validation
+             const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
+             if (!passwordRegex.test(password)) {
+                 errorMessage.textContent = 'Password must be at least 8 characters long, contain at least one uppercase letter, and at least one symbol.';
+                 return;
+             }
+ 
             // Prepare and send AJAX request
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'register.php', true);
+            xhr.open('POST', 'login.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status === 200) {
                     const response = JSON.parse(xhr.responseText);
                     if (response.success) {
-                        // Redirect to login page after successful registration
-                        window.location.href = 'index.php';
+                        // Redirect to dashboard.php after successful login
+                        window.location.href = 'dashboard.php';
                     } else {
                         // Display error message based on response
-                        errorMessage.textContent = response.error || 'Registration failed. Please try again.';
+                        errorMessage.textContent = response.error || 'Wrong username, password, or meter number.';
+                        forgotPasswordMessage.style.display = 'block';
                     }
                 } else {
                     errorMessage.textContent = 'Error: ' + xhr.statusText;
+                    forgotPasswordMessage.style.display = 'block';
                 }
             };
             xhr.onerror = function () {
                 errorMessage.textContent = 'An error occurred during the request.';
+                forgotPasswordMessage.style.display = 'block';
             };
-            xhr.send(`name=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&passwords=${encodeURIComponent(password)}&phonenumber=${encodeURIComponent(phoneNumber)}&meterNumber=${encodeURIComponent(meterNumber)}`);
+            xhr.send(`name=${encodeURIComponent(username)}&passwords=${encodeURIComponent(password)}&meterNumber=${encodeURIComponent(meterNumber)}`);
         });
     </script>
 </body>

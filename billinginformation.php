@@ -101,7 +101,7 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
         <div class="bg-dark border-right" id="sidebar-wrapper">
         <div class="sidebar-heading" style="color: rgb(0, 149, 199);">AquaTrack</div>
         <div class="list-group list-group-flush">
-                <a href="landing.php" class="list-group-item list-group-item-action bg-dark text-white">
+                <a href="index.php" class="list-group-item list-group-item-action bg-dark text-white">
                     <i class="fa fa-home"></i> Home
                 </a>
                 <a href="dashboard.php" class="list-group-item list-group-item-action bg-dark text-white">
